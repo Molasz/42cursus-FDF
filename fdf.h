@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/21 16:50:52 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:42:03 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <math.h>
 
+# define WIDTH 1280
+# define HEIGHT 720
 typedef struct s_img
 {
 	void	*img;
@@ -31,7 +34,7 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	t_img	img;
+	t_img	*img;
 }			t_mlx;
 
 enum
@@ -44,5 +47,7 @@ enum
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17
 };
+
+void	new_image(t_mlx *mlx, t_img *img);
 
 #endif

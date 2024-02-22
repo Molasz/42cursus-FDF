@@ -6,11 +6,12 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/21 17:36:50 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/22 11:10:11 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= fdf.c
+SRCS	= fdf.c \
+			image.c
 
 OBJS	= ${SRCS:.c=.o}
 
