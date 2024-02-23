@@ -6,16 +6,17 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/22 23:58:38 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/23 19:30:06 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	= fdf.c \
-			image.c
+			image.c \
+			parser.c
 
-OBJS	= ${SRCS:.c=.o}
+OBJS	= ${addprefix obj/, ${SRCS:.c=.o}}
 
-DEPS	= ${SRCS:.c=.d}
+DEPS	= ${addprefix obj/, ${SRCS:.c=.d}}
 
 NAME	= fdf
 
@@ -23,18 +24,28 @@ AR		= ar rcs
 
 RM		= rm -f
 
-CC		= clang
+CC		= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
 
 OS		= MAC
 
-all:		${NAME}
+all:		dir ${NAME}
 
 linux:		
 				${MAKE} OS=LINUX all
 
-%.o:		%.c Makefile
+dir:
+				mkdir -p obj
+				make -C libs/libft
+
+ifeq (${OS}, MAC)
+				make -C libs/mlx
+else
+				make -C libs/mlx_linux
+endif
+
+obj/%.o:		src/%.c Makefile
 ifeq (${OS}, MAC)
 				${CC} ${CFLAGS} -Imlx -c $< -MMD
 else
@@ -42,17 +53,17 @@ else
 endif
 
 ${NAME}:	${OBJS}
+				@echo OS:${OS}
 ifeq (${OS}, MAC)
-				make -C mlx
 				${CC} ${CFLAGS} -Lmlx -lmlx -framework OpenGL -framework AppKit ${OBJS} -o ${NAME}
 else
-				make -C mlx_linux
-				${CC} ${CFLAGS} -lbsd -lmlx -lXext -lX11 -o ${NAME} -v
+				${CC} ${CFLAGS} -lbsd -lmlx -lXext -lX11 -o ${NAME}
 endif
 
 clean:
-				make clean -C mlx
-				make clean -C mlx_linux
+				make clean -C libs/mlx
+				make clean -C libs/mlx_linux
+				make clean -C libs/libft
 				${RM} ${OBJS} ${DEPS}
 
 fclean:		clean
@@ -60,6 +71,6 @@ fclean:		clean
 
 re:			fclean all
 
--include ${DEPS} ${BDEPS}
+-include ${DEPS}
 
 .PHONY:		clean fclean re all linux

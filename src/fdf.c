@@ -6,12 +6,11 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/22 15:18:34 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/23 19:31:53 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
+#include "../includes/fdf.h"
 
 int	on_close(t_mlx *mlx)
 {

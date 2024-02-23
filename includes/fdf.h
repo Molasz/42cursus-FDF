@@ -6,21 +6,23 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/22 11:42:03 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/23 19:31:35 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "mlx/mlx.h"
+# include "../libs/mlx/mlx.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <fcntl.h>
 
 # define WIDTH 1280
 # define HEIGHT 720
+
 typedef struct s_img
 {
 	void	*img;
@@ -37,6 +39,13 @@ typedef struct s_mlx
 	t_img	*img;
 }			t_mlx;
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+	int	z;
+	int	color;
+}			t_point;
 enum
 {
 	ON_KEYDOWN = 2,
@@ -49,5 +58,7 @@ enum
 };
 
 void	new_image(t_mlx *mlx, t_img *img);
+
+char	*get_next_line(int fd);
 
 #endif
