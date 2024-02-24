@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/23 19:31:53 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/24 11:20:15 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int	main(int argc, char **argv)
 	t_mlx	mlx;
 	t_img	img;
 
-	if (argc && argv)
+	if (argc == 2)
 	{
+		mlx.coords = parser(argv[1]);
 		mlx.mlx = mlx_init();
 		mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "FDF");
 		new_image(&mlx, &img);

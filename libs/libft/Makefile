@@ -6,11 +6,13 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 19:20:08 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/23 19:24:58 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/24 11:09:24 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= get_next_line.c \
+SRCS	= ft_atoi_base.c \
+			lst_utils.c \
+			get_next_line.c \
 			get_next_line_utils.c
 
 OBJS	= ${SRCS:.c=.o}

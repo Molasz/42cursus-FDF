@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/23 19:30:06 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/24 11:22:35 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,8 @@ endif
 clean:
 				make clean -C libs/mlx
 				make clean -C libs/mlx_linux
-				make clean -C libs/libft
-				${RM} ${OBJS} ${DEPS}
+				make fclean -C libs/libft
+				${RM} obj/ 
 
 fclean:		clean
 				${RM} ${NAME}

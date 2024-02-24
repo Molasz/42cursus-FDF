@@ -6,13 +6,14 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/23 19:31:35 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/24 11:20:01 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# include "../libs/libft/libft.h"
 # include "../libs/mlx/mlx.h"
 # include <unistd.h>
 # include <stdlib.h>
@@ -34,6 +35,7 @@ typedef struct s_img
 
 typedef struct s_mlx
 {
+	t_list	*coords;
 	void	*mlx;
 	void	*win;
 	t_img	*img;
@@ -46,6 +48,7 @@ typedef struct s_point
 	int	z;
 	int	color;
 }			t_point;
+
 enum
 {
 	ON_KEYDOWN = 2,
@@ -56,6 +59,8 @@ enum
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17
 };
+
+t_list	*parser(char *f);
 
 void	new_image(t_mlx *mlx, t_img *img);
 
