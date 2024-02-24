@@ -6,11 +6,12 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/24 15:22:10 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/24 17:11:40 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	= fdf.c \
+			draw_line.c \
 			image.c \
 			parser.c
 
