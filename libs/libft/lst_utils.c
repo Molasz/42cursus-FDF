@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 10:36:52 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 11:14:38 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/24 11:47:01 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_list	*ft_lstnew(int x, int y, int z)
 	elem->x = x;
 	elem->y = y;
 	elem->z = z;
+	elem->color = -1;
 	elem->next = NULL;
 	return (elem);
 }

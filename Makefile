@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/24 11:22:35 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/24 11:39:02 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,13 @@ DEPS	= ${addprefix obj/, ${SRCS:.c=.d}}
 
 NAME	= fdf
 
-AR		= ar rcs
-
-RM		= rm -f
+RM		= rm -rf
 
 CC		= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
+
+LIBFT	= libs/libft/libft.a
 
 OS		= MAC
 
@@ -38,7 +38,6 @@ linux:
 dir:
 				mkdir -p obj
 				make -C libs/libft
-
 ifeq (${OS}, MAC)
 				make -C libs/mlx
 else
@@ -47,22 +46,20 @@ endif
 
 obj/%.o:		src/%.c Makefile
 ifeq (${OS}, MAC)
-				${CC} ${CFLAGS} -Imlx -c $< -MMD
+				${CC} ${CFLAGS} -Ilibs/mlx -c $< -MMD -o $@
 else
-				${CC} ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c $< -MMD
+				${CC} ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c $< -MMD $@
 endif
 
 ${NAME}:	${OBJS}
 				@echo OS:${OS}
 ifeq (${OS}, MAC)
-				${CC} ${CFLAGS} -Lmlx -lmlx -framework OpenGL -framework AppKit ${OBJS} -o ${NAME}
+				${CC} ${CFLAGS} -Llibs/mlx -lmlx -framework OpenGL -framework AppKit ${LIBFT} ${OBJS} -o ${NAME}
 else
-				${CC} ${CFLAGS} -lbsd -lmlx -lXext -lX11 -o ${NAME}
+				${CC} ${CFLAGS} -lbsd -lmlx -lXext -lX11 ${LIBFT} ${OBJS} -o ${NAME}
 endif
 
 clean:
-				make clean -C libs/mlx
-				make clean -C libs/mlx_linux
 				make fclean -C libs/libft
 				${RM} obj/ 
 
