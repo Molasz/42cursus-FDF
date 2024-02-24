@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 16:32:58 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/24 17:09:53 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	read_file(int fd, t_list **lst)
 {
 	char	*line;
 	int		y;
-	
+
 	y = 0;
 	while (y >= 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 15:30:34 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/24 18:42:52 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	new_image(t_mlx *mlx, t_img *img)
 		put_pixel(img, lst->x, lst->y, 0x00FF0000);
 		lst = lst->next;
 	}
+	draw_line(mlx, (t_point){100, 50}, (t_point){150, 200});
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
 	return (0);
 }
