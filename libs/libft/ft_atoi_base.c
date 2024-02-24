@@ -6,11 +6,21 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 11:08:16 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 11:09:03 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:15:02 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_val_base(char c, char *base)
+static int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+static int	ft_val_base(char c, char *base)
 {
 	int	i;
 
@@ -24,31 +34,7 @@ int	ft_val_base(char c, char *base)
 	return (-1);
 }
 
-int	ft_check_base(char *base)
-{
-	int	l_base;
-	int	n;
-
-	n = 1;
-	l_base = 0;
-	while (base[l_base] != '\0')
-	{
-		if (base[l_base] == '+' || base[l_base] == '-' || base[l_base] == ' '
-			|| !(base[l_base] > 31 && base[l_base] < 127))
-			return (-1);
-		n = 1;
-		while (base[l_base + n] != '\0')
-		{
-			if (base[l_base + n] == base[l_base])
-				return (-1);
-			n++;
-		}
-		l_base++;
-	}
-	return (l_base);
-}
-
-char	*ft_get_sign(int *sign, char *str)
+static char	*ft_get_sign(int *sign, char *str)
 {
 	while ((*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r'
 			|| *str == '\t' || *str == '\v') && *str)
@@ -71,9 +57,7 @@ int	ft_atoi_base(char *str, char *base)
 
 	res = 0;
 	sign = 1;
-	l_base = ft_check_base(base);
-	if (l_base < 2)
-		return (0);
+	l_base = ft_strlen(base);
 	str = ft_get_sign(&sign, str);
 	while (*str)
 	{

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 11:20:01 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:21:15 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
+# define SPACE 100
 
 typedef struct s_img
 {
@@ -36,6 +37,8 @@ typedef struct s_img
 typedef struct s_mlx
 {
 	t_list	*coords;
+	int		size_x;
+	int		size_y;
 	void	*mlx;
 	void	*win;
 	t_img	*img;
@@ -62,8 +65,6 @@ enum
 
 t_list	*parser(char *f);
 
-void	new_image(t_mlx *mlx, t_img *img);
-
-char	*get_next_line(int fd);
+int	new_image(t_mlx *mlx, t_img *img);
 
 #endif
