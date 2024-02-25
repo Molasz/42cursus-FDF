@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 19:59:45 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:24:38 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	put_pixel(t_img *img, int x, int y, t_color *color)
 	char	*dst;
 
 	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(unsigned int *)dst = (color->t << 24 | color->r << 16 | color->g << 8 | color->b);
+	*(unsigned int *)dst = (color->r << 16 | color->g << 8 | color->b);
 }
 
 static void	init_line(t_point start, t_point end, t_point *s, t_point *d)
@@ -50,11 +50,9 @@ static void	update_point(t_point *d, t_point *s, t_point *start, int *err)
 
 static void	update_color(t_color *color, int pxc)
 {
-	color->t += color->dt / pxc;
 	color->r += color->dr / pxc;
 	color->g += color->dg / pxc;
 	color->b += color->db / pxc;
-	printf("r:%d g:%d b:%d\n", color->r, color->g, color->b);
 }
 
 void	draw_line(t_img *img, t_point start, t_point end, t_color *color)

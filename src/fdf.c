@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 00:12:51 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:18:31 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,15 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		mlx.mlx = mlx_init();
-		if (!mlx.mlx)
-			return (1);
 		mlx.coords = parser(argv[1]);
 		if (!mlx.coords)
 			return (1);
+		mlx.mlx = mlx_init();
+		if (!mlx.mlx)
+		{
+			ft_lstclear(&mlx.coords);
+			return (1);
+		}
 		mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "FDF");
 		if (!mlx.win || new_image(&mlx, &img))
 		{

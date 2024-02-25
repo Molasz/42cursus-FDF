@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 19:54:23 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:49:38 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ static void	read_color(t_list *lst, char *s)
 	
 	if (*s == ',')
 	{
-		color = ft_atoi_base(s + 3, "0123456789ABCDEF");
-		lst->color.t = 0;
+		color = ft_atohex(s + 3);
 		lst->color.r = (color >> 16) & 0xFF;
 		lst->color.g = (color >> 8) & 0xFF;
 		lst->color.b = color & 0xFF;
 	}
 	else
 	{
-		lst->color.t = 0;
 		lst->color.r = 255;
 		lst->color.g = 255;
 		lst->color.b = 255;
@@ -43,7 +41,7 @@ static int	read_line(t_list **lst, char *s, int y)
 	x = 0;
 	while (s[i] != '\n' && s[i])
 	{
-		new = ft_lstnew(x, y, ft_atoi_base(s + i, "0123456789"));
+		new = ft_lstnew(x, y, ft_atoi(s + i));
 		if (!new)
 			return (1);
 		while (s[i] >= '0' && s[i] <= '9')

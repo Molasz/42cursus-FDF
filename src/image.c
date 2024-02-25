@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 19:56:58 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:24:49 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 static void	calc_color(t_color *color, t_color *start, t_color *end)
 {
-	color->t = start->t;
 	color->r = start->r;
 	color->g = start->g;
 	color->b = start->b;
-	color->dt = end->t - start->t;
 	color->dr = end->r - start->r;
 	color->dg = end->g - start->g;
 	color->db = end->b - start->b;
