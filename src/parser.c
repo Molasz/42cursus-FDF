@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/26 00:26:29 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:32:26 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	read_color(t_list *lst, char *s)
 	}
 	else
 	{
-		lst->color.r = 255 - lst->z;
-		lst->color.g = 255 - lst->z;
-		lst->color.b = 255 - lst->z;
+		lst->color.r = 255;
+		lst->color.g = 255;
+		lst->color.b = 255;
 	}
 }
 
