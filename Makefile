@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/26 00:11:01 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/26 00:16:42 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ ifeq (${OS}, MAC)
 else
 				${CC} ${CFLAGS} ${OBJS} ${LIBFT} libs/mlx_linux/libmlx.a -lXext -lX11 -lm -lz -o ${NAME}
 endif
+				cowsay 'FDF READY!'
 
 clean:
 				make fclean -C libs/libft
