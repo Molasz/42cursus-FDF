@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 20:24:49 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 22:49:40 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ static void	connect_pixels(t_mlx *mlx)
 
 int	new_image(t_mlx *mlx, t_img *img)
 {
-	if (mlx->img)
-		mlx_destroy_image(mlx->mlx, mlx->img->img);
 	img->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
 	if (!img->img)
 		return (1);

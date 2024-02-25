@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 20:49:38 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:00:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 static void	read_color(t_list *lst, char *s)
 {
-	int color;
-	
 	if (*s == ',')
 	{
-		color = ft_atohex(s + 3);
-		lst->color.r = (color >> 16) & 0xFF;
-		lst->color.g = (color >> 8) & 0xFF;
-		lst->color.b = color & 0xFF;
+		lst->color.r = ft_atohex(s + 3);
+		if (s[5] != ' ')
+			lst->color.g = ft_atohex(s + 5);
+		if (s[5] != ' ' && s[7] != ' ')
+			lst->color.b = ft_atohex(s + 7);
 	}
 	else
 	{
-		lst->color.r = 255;
-		lst->color.g = 255;
-		lst->color.b = 255;
+		lst->color.r = 255 - lst->z;
+		lst->color.g = 255 - lst->z;
+		lst->color.b = 255 - lst->z;
 	}
 }
 

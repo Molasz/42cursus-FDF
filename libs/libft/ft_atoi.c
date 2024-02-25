@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 20:09:29 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 20:23:12 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 23:17:24 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_atohex(const char *str)
 
 	i = 0;
 	count = 0;
-	while (str[i])
+	while (str[i] && i < 2)
 	{
 		count *= 16;
 		if (str[i] >= '0' && str[i] <= '9')

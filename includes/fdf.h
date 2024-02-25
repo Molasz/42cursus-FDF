@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 19:29:46 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 23:38:16 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <math.h>
 # include <fcntl.h>
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1000
+# define HEIGHT 1000
 # define SPACE 100
 
 typedef struct s_img
