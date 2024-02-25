@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 00:41:06 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 19:29:46 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ enum
 t_list	*parser(char *f);
 
 int		new_image(t_mlx *mlx, t_img *img);
-void	put_pixel(t_img *img, int x, int y, int color);
 
-void	draw_line(t_img *img, t_point start, t_point end);
+void	draw_line(t_img *img, t_point start, t_point end, t_color *color);
 
 #endif
