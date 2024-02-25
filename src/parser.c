@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/26 00:00:30 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:26:29 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static int	read_line(t_list **lst, char *s, int y)
 	x = 0;
 	while (s[i] != '\n' && s[i])
 	{
+		while (s[i] == ' ')
+			i++;
 		new = ft_lstnew(x, y, ft_atoi(s + i));
 		if (!new)
 			return (1);
@@ -48,8 +50,6 @@ static int	read_line(t_list **lst, char *s, int y)
 		read_color(new, s + i);
 		ft_lstadd_back(lst, new);
 		while (s[i] != ' ' && s[i])
-			i++;
-		while (s[i] == ' ')
 			i++;
 		x++;
 	}
