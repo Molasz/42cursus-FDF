@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/24 17:11:40 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/25 00:03:03 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,19 +45,15 @@ else
 				make -C libs/mlx_linux
 endif
 
-obj/%.o:		src/%.c Makefile
-ifeq (${OS}, MAC)
-				${CC} ${CFLAGS} -Ilibs/mlx -c $< -MMD -o $@
-else
-				${CC} ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c $< -MMD $@
-endif
+obj/%.o:	src/%.c Makefile
+				${CC} ${CFLAGS} -c $< -MMD -o $@
 
 ${NAME}:	${OBJS}
 				@echo OS:${OS}
 ifeq (${OS}, MAC)
-				${CC} ${CFLAGS} -Llibs/mlx -lmlx -framework OpenGL -framework AppKit ${LIBFT} ${OBJS} -o ${NAME}
+				${CC} ${CFLAGS} ${OBJS} ${LIBFT} -Llibs/mlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 else
-				${CC} ${CFLAGS} -lbsd -lmlx -lXext -lX11 ${LIBFT} ${OBJS} -o ${NAME}
+				${CC} ${CFLAGS} ${OBJS} ${LIBFT} libs/mlx_linux/libmlx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o ${NAME}
 endif
 
 clean:

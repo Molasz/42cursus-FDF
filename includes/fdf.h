@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 18:35:57 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 00:41:06 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ typedef struct s_img
 typedef struct s_mlx
 {
 	t_list	*coords;
-	int		size_x;
-	int		size_y;
 	void	*mlx;
 	void	*win;
 	t_img	*img;
@@ -66,6 +64,6 @@ t_list	*parser(char *f);
 int		new_image(t_mlx *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
 
-void	draw_line(t_mlx *mlx, t_point start, t_point end);
+void	draw_line(t_img *img, t_point start, t_point end);
 
 #endif

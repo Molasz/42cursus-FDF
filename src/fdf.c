@@ -6,12 +6,13 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 16:18:52 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 00:12:51 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
+/*
 static void	print_lst(t_list *lst)
 {
 	while (lst)
@@ -20,6 +21,7 @@ static void	print_lst(t_list *lst)
 		lst = lst->next;
 	}
 }
+*/
 
 static int	on_close(t_mlx *mlx)
 {
@@ -51,7 +53,6 @@ int	main(int argc, char **argv)
 		mlx.coords = parser(argv[1]);
 		if (!mlx.coords)
 			return (1);
-		print_lst(mlx.coords);
 		mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "FDF");
 		if (!mlx.win || new_image(&mlx, &img))
 		{

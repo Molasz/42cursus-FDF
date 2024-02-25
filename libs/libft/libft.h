@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 10:37:22 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 15:25:34 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 00:35:56 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "get_next_line.h"
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct s_list
 {
@@ -30,6 +31,7 @@ int		ft_atoi_base(char *str, char *base);
 t_list	*ft_lstnew(int x, int y, int z);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *n);
+t_list	*ft_lstget(t_list *lst, int n);
 void	ft_lstclear(t_list **lst);
 
 #endif

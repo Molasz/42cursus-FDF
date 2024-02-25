@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 17:09:53 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 00:07:26 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static int	read_file(int fd, t_list **lst)
 	y = 0;
 	while (y >= 0)
 	{
-		printf("READING LINE %d\n", y);
 		line = get_next_line(fd);
 		if (!line)
 			break ;

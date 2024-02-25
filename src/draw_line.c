@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 18:46:33 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 00:14:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_line(t_point start, t_point end, t_point *s, t_point *d)
 		s->y = -1;
 }
 
-void	draw_line(t_mlx *mlx, t_point start, t_point end)
+void	draw_line(t_img *img, t_point start, t_point end)
 {
 	t_point	d;
 	t_point	s;
@@ -37,7 +37,7 @@ void	draw_line(t_mlx *mlx, t_point start, t_point end)
 	err = d.x + d.y;
 	while (1)
 	{
-		put_pixel(mlx->img, start.x, start.y, 0x00FFFFFF);
+		put_pixel(img, start.x, start.y, 0x00FFFFFF);
 		if (start.x == end.x && start.y == end.y)
 			break ;
 		err2 = 2 * err;

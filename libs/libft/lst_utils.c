@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 10:36:52 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/24 14:43:41 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/25 00:48:46 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,23 @@ void	ft_lstadd_back(t_list **lst, t_list *n)
 	}
 	else
 		lst = &n;
+}
+
+t_list	*ft_lstget(t_list *lst, int n)
+{
+	t_list	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = lst;
+	while (i < n)
+	{
+		if (!tmp)
+			return (NULL);
+		tmp = tmp->next;
+		i++;
+	}
+	return (tmp);
 }
 
 void	ft_lstclear(t_list **lst)
