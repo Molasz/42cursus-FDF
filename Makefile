@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/26 00:16:42 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/28 16:19:56 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,11 +51,10 @@ obj/%.o:	src/%.c Makefile
 ${NAME}:	${OBJS}
 				@echo OS:${OS}
 ifeq (${OS}, MAC)
-				${CC} ${CFLAGS} ${OBJS} ${LIBFT} -lmlx -framework OpenGL -framework AppKit -o ${NAME}
+				${CC} ${CFLAGS} ${OBJS} ${LIBFT} -Llibs/mlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 else
 				${CC} ${CFLAGS} ${OBJS} ${LIBFT} libs/mlx_linux/libmlx.a -lXext -lX11 -lm -lz -o ${NAME}
 endif
-				cowsay 'FDF READY!'
 
 clean:
 				make fclean -C libs/libft

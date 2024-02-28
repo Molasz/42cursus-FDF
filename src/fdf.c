@@ -6,22 +6,26 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 20:18:31 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:39:26 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-/*
-static void	print_lst(t_list *lst)
+void	print_lst(t_list *lst)
 {
 	while (lst)
 	{
-		printf("[%d,%d,%d] (%d)\n", lst->x, lst->y, lst->z, lst->color);
+		printf("[%d,%d,%d]\n", lst->x, lst->y, lst->z);
 		lst = lst->next;
 	}
 }
-*/
+
+static int	on_error(t_mlx *mlx)
+{
+	ft_lstclear(&mlx->coords);
+	return (1);
+}
 
 static int	on_close(t_mlx *mlx)
 {
@@ -47,21 +51,16 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		mlx.coords = parser(argv[1]);
+		mlx.coords = parser(argv[1], &mlx);
 		if (!mlx.coords)
 			return (1);
 		mlx.mlx = mlx_init();
 		if (!mlx.mlx)
-		{
-			ft_lstclear(&mlx.coords);
-			return (1);
-		}
-		mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "FDF");
+			on_error(&mlx);
+		mlx.win = mlx_new_window(mlx.mlx, mlx.x_size + (SPACE * 2),
+				mlx.y_size + (SPACE * 2), "FDF");
 		if (!mlx.win || new_image(&mlx, &img))
-		{
-			ft_lstclear(&mlx.coords);
-			return (1);
-		}
+			on_error(&mlx);
 		mlx_hook(mlx.win, ON_KEYUP, 0, on_key, &mlx);
 		mlx_hook(mlx.win, ON_DESTROY, 0, on_close, &mlx);
 		mlx_loop(mlx.mlx);

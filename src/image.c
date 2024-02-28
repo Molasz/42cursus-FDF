@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 22:49:40 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:40:59 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ static void	connect_pixels(t_mlx *mlx)
 
 int	new_image(t_mlx *mlx, t_img *img)
 {
-	img->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
+	img->img = mlx_new_image(mlx->mlx, mlx->x_size, mlx->y_size);
 	if (!img->img)
 		return (1);
 	img->addr = mlx_get_data_addr(img->img,
 			&img->bpp, &img->line_len, &img->endian);
 	mlx->img = img;
 	connect_pixels(mlx);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, SPACE + 1, SPACE + 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 23:38:16 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:57:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 # include <math.h>
 # include <fcntl.h>
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define SIZE 1000
 # define SPACE 100
 
 typedef struct s_img
@@ -40,6 +39,8 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*win;
 	t_img	*img;
+	int		x_size;
+	int		y_size;
 }			t_mlx;
 
 typedef struct s_point
@@ -59,7 +60,7 @@ enum
 	ON_DESTROY = 17
 };
 
-t_list	*parser(char *f);
+t_list	*parser(char *f, t_mlx *mlx);
 
 int		new_image(t_mlx *mlx, t_img *img);
 
