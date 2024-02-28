@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 16:57:30 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 19:45:35 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <fcntl.h>
 
 # define SIZE 1000
-# define SPACE 100
+# define FOV 80
 
 typedef struct s_img
 {
@@ -60,7 +60,8 @@ enum
 	ON_DESTROY = 17
 };
 
-t_list	*parser(char *f, t_mlx *mlx);
+t_list	*parser(char *f);
+void	calc_coords(t_mlx *mlx);
 
 int		new_image(t_mlx *mlx, t_img *img);
 

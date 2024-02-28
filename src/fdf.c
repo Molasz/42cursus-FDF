@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 17:39:26 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 19:50:22 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		mlx.coords = parser(argv[1], &mlx);
+		mlx.coords = parser(argv[1]);
 		if (!mlx.coords)
 			return (1);
+		calc_coords(&mlx);
 		mlx.mlx = mlx_init();
 		if (!mlx.mlx)
 			on_error(&mlx);
-		mlx.win = mlx_new_window(mlx.mlx, mlx.x_size + (SPACE * 2),
-				mlx.y_size + (SPACE * 2), "FDF");
+		mlx.win = mlx_new_window(mlx.mlx, mlx.x_size, mlx.y_size, "FDF");
 		if (!mlx.win || new_image(&mlx, &img))
 			on_error(&mlx);
 		mlx_hook(mlx.win, ON_KEYUP, 0, on_key, &mlx);

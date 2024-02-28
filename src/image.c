@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 16:40:59 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 19:38:39 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,24 @@ static void	connect_pixels(t_mlx *mlx)
 		next_line = next_line->next;
 	while (lst->next)
 	{
-		if (lst->y == lst->next->y)
-			calc_color(&color, &lst->color, &lst->next->color);
-		if (lst->y == lst->next->y)
-			draw_line(mlx->img, (t_point){lst->x, lst->y},
-				(t_point){lst->next->x, lst->next->y}, &color);
-		if (next_line)
-			calc_color(&color, &lst->color, &next_line->color);
-		if (next_line)
-			draw_line(mlx->img, (t_point){lst->x, lst->y},
-				(t_point){next_line->x, next_line->y}, &color);
+		if (!(lst->x < 0 || lst->x > mlx->x_size || lst->y < 0
+				|| lst->y > mlx->y_size))
+				/*
+				|| next_line->x < 0 || next_line->y > mlx->x_size + SPACE * 2 
+				|| next_line->y < 0 || next_line->y > mlx->y_size + SPACE * 2))
+				*/
+		{
+			if (lst->y == lst->next->y)
+				calc_color(&color, &lst->color, &lst->next->color);
+			if (lst->y == lst->next->y)
+				draw_line(mlx->img, (t_point){lst->x, lst->y},
+					(t_point){lst->next->x, lst->next->y}, &color);
+			if (next_line)
+				calc_color(&color, &lst->color, &next_line->color);
+			if (next_line)
+				draw_line(mlx->img, (t_point){lst->x, lst->y},
+					(t_point){next_line->x, next_line->y}, &color);
+		}
 		lst = lst->next;
 		if (next_line)
 			next_line = next_line->next;
@@ -59,6 +67,6 @@ int	new_image(t_mlx *mlx, t_img *img)
 			&img->bpp, &img->line_len, &img->endian);
 	mlx->img = img;
 	connect_pixels(mlx);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, SPACE + 1, SPACE + 1);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
 	return (0);
 }

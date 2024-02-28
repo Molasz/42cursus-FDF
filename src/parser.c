@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 17:36:09 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 19:45:39 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,34 +75,7 @@ static int	read_file(int fd, t_list **lst)
 	return (0);
 }
 
-static void	calc_coords(t_list *lst, t_mlx *mlx)
-{
-	t_list	*tmp;
-	float	size;
-
-	tmp = ft_lstlast(lst);
-	if (tmp->x > tmp->y)
-	{
-		mlx->x_size = SIZE;
-		size = SIZE / (tmp->x + 0.1);
-		mlx->y_size = size * (tmp->y + 1);
-	}
-	else
-	{
-		mlx->y_size = SIZE;
-		size = SIZE / (tmp->y + 0.1);
-		mlx->x_size = size * (tmp->x + 1);
-	}
-	tmp = lst;
-	while (tmp)
-	{
-		tmp->x = tmp->x * size;
-		tmp->y = tmp->y * size;
-		tmp = tmp->next;
-	}
-}
-
-t_list	*parser(char *file, t_mlx *mlx)
+t_list	*parser(char *file)
 {
 	int		fd;
 	t_list	*lst;
@@ -113,6 +86,5 @@ t_list	*parser(char *file, t_mlx *mlx)
 	lst = NULL;
 	if (read_file(fd, &lst))
 		return (NULL);
-	calc_coords(lst, mlx);
 	return (lst);
 }
