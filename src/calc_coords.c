@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:33:55 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 19:57:57 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:19:26 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static float	set_win_size(t_mlx *mlx)
 	{
 		mlx->x_size = SIZE;
 		size = SIZE / 2 / (tmp->x + 0.1);
-		mlx->y_size = size * (tmp->y + 1) * 2;
+		mlx->y_size = size * (tmp->y + 1) + (SIZE / 2);
 	}
 	else
 	{
 		mlx->y_size = SIZE;
 		size = SIZE / 2 / (tmp->y + 0.1);
-		mlx->x_size = size * (tmp->x + 1) * 2;
+		mlx->x_size = size * (tmp->x + 1) + (SIZE / 2);
 	}
 	return (size);
 }

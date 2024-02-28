@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 10:37:22 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 20:24:17 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:15:23 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,14 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-	int	dr;
-	int	dg;
-	int	db;
-}			t_color;
-
 typedef struct s_list
 {
 	int				x;
 	int				y;
 	int				z;
-	t_color			color;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
 	struct s_list	*next;
 }		t_list;
 

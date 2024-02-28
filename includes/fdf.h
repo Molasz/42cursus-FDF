@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 19:45:35 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:41:05 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,16 @@ typedef struct s_point
 	int	x;
 	int	y;
 }			t_point;
+
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+	int	dr;
+	int	dg;
+	int	db;
+}			t_color;
 
 enum
 {
