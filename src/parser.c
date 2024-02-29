@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 21:43:27 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:45:17 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	read_color(t_list *lst, char *s)
 	}
 }
 
-static int	read_line(t_list **lst, char *s, int y)
+static int	read_line(t_list **lst, char *s, int y, t_mlx *mlx)
 {
 	t_list	*new;
 	int		x;
@@ -53,10 +53,12 @@ static int	read_line(t_list **lst, char *s, int y)
 			i++;
 		x++;
 	}
+	mlx->max_x = new->x;
+	mlx->max_y = new->y;
 	return (0);
 }
 
-static int	read_file(int fd, t_list **lst)
+static int	read_file(int fd, t_list **lst, t_mlx *mlx)
 {
 	char	*line;
 	int		y;
@@ -67,7 +69,7 @@ static int	read_file(int fd, t_list **lst)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if (read_line(lst, line, y))
+		if (read_line(lst, line, y, mlx))
 			return (1);
 		free(line);
 		y++;
@@ -75,7 +77,30 @@ static int	read_file(int fd, t_list **lst)
 	return (0);
 }
 
-t_list	*parser(char *file)
+static void	set_win_size(t_mlx *mlx)
+{
+	float	size;
+
+	if (mlx->max_x > mlx->max_y)
+	{
+		mlx->width = SIZE;
+		size = SIZE / 2 / (mlx->max_x + 0.0);
+		mlx->height = size * (mlx->max_y + 1) + (SIZE / 2);
+	}
+	else
+	{
+		mlx->height = SIZE;
+		size = SIZE / 2 / (mlx->max_y + 0.0);
+		mlx->width = size * (mlx->max_x + 1) + (SIZE / 2);
+	}
+	mlx->x_shift = SIZE / 4;
+	mlx->y_shift = SIZE / 4;
+	mlx->scale = size;
+	mlx->zscale = 10;
+	mlx->angle = 160;
+}
+
+t_list	*parser(char *file, t_mlx *mlx)
 {
 	int		fd;
 	t_list	*lst;
@@ -84,7 +109,8 @@ t_list	*parser(char *file)
 	if (fd < 0)
 		return (NULL);
 	lst = NULL;
-	if (read_file(fd, &lst))
+	if (read_file(fd, &lst, mlx))
 		return (NULL);
+	set_win_size(mlx);
 	return (lst);
 }

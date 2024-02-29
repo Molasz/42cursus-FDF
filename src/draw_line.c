@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/29 01:12:31 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:26:01 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	put_pixel(t_mlx *mlx, int x, int y, t_color *color)
 {
 	char	*dst;
 
-	if (x < 0 || x > mlx->x_size || y < 0 || y > mlx->y_size)
+	if (x < 0 || x > mlx->width || y < 0 || y > mlx->height)
 		return ;
 	dst = mlx->img->addr + (y * mlx->img->line_len + x * (mlx->img->bpp / 8));
 	*(unsigned int *)dst = (color->r << 16 | color->g << 8 | color->b);
@@ -64,6 +64,7 @@ void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 	int		err;
 	int		pxc;
 
+	printf("%d %d\n", start.x, end.y);
 	init_line(start, end, &s, &d);
 	err = d.x + d.y;
 	pxc = sqrt((d.x * d.x) + (d.y * d.y));
