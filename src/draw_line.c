@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/29 16:26:01 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:17:48 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 	int		err;
 	int		pxc;
 
-	printf("%d %d\n", start.x, end.y);
 	init_line(start, end, &s, &d);
 	err = d.x + d.y;
 	pxc = sqrt((d.x * d.x) + (d.y * d.y));

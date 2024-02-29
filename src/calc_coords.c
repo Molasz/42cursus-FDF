@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:33:55 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/29 15:40:27 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:19:06 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	calc_coords(t_mlx *mlx)
 {
 	t_list	*lst;
 	float	angle;
-	
+
 	angle = mlx->angle / 180.0;
 	lst = mlx->coords;
 	while (lst)
