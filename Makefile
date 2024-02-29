@@ -6,15 +6,15 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/28 19:47:13 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/29 20:20:03 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	= fdf.c \
-			calc_coords.c \
 			draw_line.c \
 			image.c \
-			parser.c
+			parser.c \
+			parser_limits.c
 
 OBJS	= ${addprefix obj/, ${SRCS:.c=.o}}
 
@@ -49,7 +49,7 @@ endif
 obj/%.o:	src/%.c Makefile
 				${CC} ${CFLAGS} -c $< -MMD -o $@
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} dir
 				@echo OS:${OS}
 ifeq (${OS}, MAC)
 				${CC} ${CFLAGS} ${OBJS} ${LIBFT} -Llibs/mlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
@@ -60,7 +60,6 @@ endif
 clean:
 				make fclean -C libs/libft
 				make clean -C libs/mlx
-				make clean -C libs/mlx_linux
 				${RM} obj/ 
 
 fclean:		clean

@@ -6,51 +6,65 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/29 17:24:05 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 19:58:35 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void	calc_color(t_color *color, t_list *start, t_list *end)
+static void	calc_color(t_mlx *mlx, t_color *color, t_point start, t_point end)
 {
-	color->r = start->r;
-	color->g = start->g;
-	color->b = start->b;
-	color->dr = end->r - start->r;
-	color->dg = end->g - start->g;
-	color->db = end->b - start->b;
+	color->r = mlx->coords[start.y][start.x].r;
+	color->g = mlx->coords[start.y][start.x].g;
+	color->b = mlx->coords[start.y][start.x].b;
+	color->dr = mlx->coords[end.y][end.x].r - mlx->coords[start.y][start.x].r;
+	color->dg = mlx->coords[end.y][end.x].g - mlx->coords[start.y][start.x].g;
+	color->db = mlx->coords[end.y][end.x].b - mlx->coords[start.y][start.x].b;
 }
 
-static void	calc_line(t_mlx *mlx, t_color *color, t_list *start, t_list *end)
+static void	calc_line(t_mlx *mlx, t_point start, t_point end, double angle)
 {
-	calc_color(color, start, end);
-	draw_line(mlx, (t_point){start->x, start->y},
-		(t_point){end->x, end->y}, color);
+	t_color	color;
+	int		z;
+
+	calc_color(mlx, &color, start, end);
+	z = mlx->coords[start.y][start.x].z * mlx->zscale;
+	start.x *= mlx->scale;
+	start.y *= mlx->scale;
+	start.x = (start.x - start.y) * cos(angle);
+	start.y = (start.x + start.y) * sin(angle) - z;
+	start.x += mlx->x_shift;
+	start.y += mlx->y_shift;
+	z = mlx->coords[end.y][end.x].z * mlx->zscale;
+	end.x *= mlx->scale;
+	end.y *= mlx->scale;
+	end.x = (end.x - end.y) * cos(angle);
+	end.y = (end.x + end.y) * sin(angle) - z;
+	end.x += mlx->x_shift;
+	end.y += mlx->y_shift;
+	draw_line(mlx, start, end, &color);
 }
 
 static void	connect_pixels(t_mlx *mlx)
 {
-	t_color	color;
-	t_list	*lst;
-	t_list	*next_line;
-	int		i;
+	int		x;
+	int		y;
+	double	angle;
 
-	lst = mlx->coords;
-	next_line = lst;
-	i = 0;
-	while (i++ <= mlx->max_x)
-		next_line = next_line->next;
-	while (lst->next)
+	y = 0;
+	angle = mlx->angle / 180.0;
+	while (y < mlx->max_y)
 	{
-		if (lst->y != mlx->max_y)
-			calc_line(mlx, &color, lst, lst->next);
-		if (next_line)
+		x = 0;
+		while (x < mlx->max_x)
 		{
-			calc_line(mlx, &color, lst, next_line);
-			next_line = next_line->next;
+			if (x + 1 < mlx->max_x)
+				calc_line(mlx, (t_point){x, y}, (t_point){x + 1, y}, angle);
+			if (y + 1 < mlx->max_y)
+				calc_line(mlx, (t_point){x, y}, (t_point){x, y + 1}, angle);
+			x++;
 		}
-		lst = lst->next;
+		y++;
 	}
 }
 

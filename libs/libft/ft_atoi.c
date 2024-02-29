@@ -6,10 +6,11 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 20:09:29 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 23:17:24 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 19:32:31 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 int	ft_atoi(const char *str)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/29 15:38:56 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:30:26 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,20 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_coord
+{
+	int				z;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}			t_coord;
+
 typedef struct s_mlx
 {
-	t_list	*coords;
 	void	*mlx;
 	void	*win;
 	t_img	*img;
+	t_coord	**coords;
 	int		max_x;
 	int		max_y;
 	int		width;
@@ -76,9 +84,9 @@ enum
 	ON_DESTROY = 17
 };
 
-t_list	*parser(char *f, t_mlx *mlx);
-
-void	calc_coords(t_mlx *mlx);
+void	free_coords(t_mlx *mlx);
+int		parser_limits(char *f, t_mlx *mlx);
+int		parser(char *f, t_mlx *mlx);
 
 int		new_image(t_mlx *mlx, t_img *img);
 
