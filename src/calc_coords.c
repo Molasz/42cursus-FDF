@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:33:55 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 22:19:26 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 01:59:05 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ static float	set_win_size(t_mlx *mlx)
 
 void	calc_coords(t_mlx *mlx)
 {
-	t_list	*tmp;
+	t_list	*lst;
 	float	size;
 	int		space;
 
 	size = set_win_size(mlx);
-	tmp = mlx->coords;
+	lst = mlx->coords;
 	space = SIZE / 4;
-	while (tmp)
+	while (lst)
 	{
-		tmp->x = tmp->x * size + space;
-		tmp->y = tmp->y * size + space;
-		tmp = tmp->next;
+		lst->x = (lst->x * cos(FOV) + lst->y * cos(FOV + 120)
+				+ lst->z * cos(FOV - 120)) * size + space;
+		lst->y = (lst->x * sin(FOV) + lst->y * sin(FOV + 120)
+				+ lst->z * sin(FOV - 120)) * size + space;
+		lst = lst->next;
 	}
 }

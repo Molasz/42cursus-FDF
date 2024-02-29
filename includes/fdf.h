@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 21:41:05 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 01:51:51 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,11 @@ enum
 };
 
 t_list	*parser(char *f);
+
 void	calc_coords(t_mlx *mlx);
 
 int		new_image(t_mlx *mlx, t_img *img);
 
-void	draw_line(t_img *img, t_point start, t_point end, t_color *color);
+void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color);
 
 #endif

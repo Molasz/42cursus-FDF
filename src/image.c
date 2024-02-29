@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 22:18:52 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 01:10:46 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ static void	connect_pixels(t_mlx *mlx)
 		if (lst->y == lst->next->y)
 			calc_color(&color, lst, lst->next);
 		if (lst->y == lst->next->y)
-			draw_line(mlx->img, (t_point){lst->x, lst->y},
+			draw_line(mlx, (t_point){lst->x, lst->y},
 				(t_point){lst->next->x, lst->next->y}, &color);
 		if (next_line)
 			calc_color(&color, lst, next_line);
 		if (next_line)
-			draw_line(mlx->img, (t_point){lst->x, lst->y},
+			draw_line(mlx, (t_point){lst->x, lst->y},
 				(t_point){next_line->x, next_line->y}, &color);
 		lst = lst->next;
 		if (next_line)

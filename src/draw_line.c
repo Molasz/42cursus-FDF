@@ -6,17 +6,19 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/25 20:24:38 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 01:12:31 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void	put_pixel(t_img *img, int x, int y, t_color *color)
+static void	put_pixel(t_mlx *mlx, int x, int y, t_color *color)
 {
 	char	*dst;
 
-	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	if (x < 0 || x > mlx->x_size || y < 0 || y > mlx->y_size)
+		return ;
+	dst = mlx->img->addr + (y * mlx->img->line_len + x * (mlx->img->bpp / 8));
 	*(unsigned int *)dst = (color->r << 16 | color->g << 8 | color->b);
 }
 
@@ -55,7 +57,7 @@ static void	update_color(t_color *color, int pxc)
 	color->b += color->db / pxc;
 }
 
-void	draw_line(t_img *img, t_point start, t_point end, t_color *color)
+void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 {
 	t_point	d;
 	t_point	s;
@@ -67,8 +69,8 @@ void	draw_line(t_img *img, t_point start, t_point end, t_color *color)
 	pxc = sqrt((d.x * d.x) + (d.y * d.y));
 	while (1)
 	{
-		put_pixel(img, start.x, start.y, color);
-		if (start.x == end.x && start.y == end.y)
+		put_pixel(mlx, start.x, start.y, color);
+		if (start.x >= end.x && start.y >= end.y)
 			break ;
 		update_point(&d, &s, &start, &err);
 		update_color(color, pxc);

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 19:50:22 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/02/29 01:39:29 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	main(int argc, char **argv)
 		if (!mlx.coords)
 			return (1);
 		calc_coords(&mlx);
+		print_lst(mlx.coords);
 		mlx.mlx = mlx_init();
 		if (!mlx.mlx)
 			on_error(&mlx);
