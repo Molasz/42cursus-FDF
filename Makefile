@@ -6,15 +6,16 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/29 20:20:03 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/02/29 22:20:04 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	= fdf.c \
-			draw_line.c \
-			image.c \
+			parser_limits.c \
 			parser.c \
-			parser_limits.c
+			image.c \
+			draw_line.c \
+			controls.c
 
 OBJS	= ${addprefix obj/, ${SRCS:.c=.o}}
 
