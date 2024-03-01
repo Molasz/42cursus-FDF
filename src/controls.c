@@ -6,13 +6,13 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 22:15:54 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 13:13:33 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:56:38 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	on_close(t_mlx *mlx)
+static int	on_close(t_mlx *mlx)
 {
 	if (mlx->img)
 		mlx_destroy_image(mlx->mlx, mlx->img->img);
@@ -24,8 +24,9 @@ int	on_close(t_mlx *mlx)
 
 #ifndef BONUS
 
-int	on_key(int n, t_mlx *mlx)
+static int	on_key(int n, t_mlx *mlx)
 {
+	printf("KEY:%d\n", n);
 	if (n == 53)
 	{
 		on_close(mlx);
@@ -35,7 +36,7 @@ int	on_key(int n, t_mlx *mlx)
 }
 #else
 
-int	on_key(int n, t_mlx *mlx)
+static int	on_key(int n, t_mlx *mlx)
 {
 	if (n == 53)
 	{
@@ -47,8 +48,15 @@ int	on_key(int n, t_mlx *mlx)
 }
 #endif
 
-int	on_mouse(int button, int x, int y, t_mlx *mlx)
+static int	on_mouse(int button, int x, int y, t_mlx *mlx)
 {
 	printf("%d %d %d %p\n", button, x, y, mlx);
 	return (0);
+}
+
+void	controls(t_mlx *mlx)
+{
+	mlx_hook(mlx->win, ON_DESTROY, 0, on_close, mlx);
+	mlx_key_hook(mlx->win, on_key, mlx);
+	mlx_hook(mlx->win, ON_MOUSEUP, 0, on_mouse, mlx);
 }
