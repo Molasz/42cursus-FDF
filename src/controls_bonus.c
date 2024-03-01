@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 14:04:33 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:13:58 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	on_key_bonus(int n, t_mlx *mlx)
 {
-	if (n == 123)
+	if (n == UP)
 		mlx->x_shift -= 10;
-	else if (n == 124)
+	else if (n == DOWN)
 		mlx->x_shift += 10;
-	else if (n == 125)
+	else if (n == RIGHT)
 		mlx->y_shift += 10;
-	else if (n == 126)
+	else if (n == LEFT)
 		mlx->y_shift -= 10;
 	else if (n == 18 && mlx->angle != 360)
 		mlx->angle += 10;
@@ -30,7 +30,6 @@ void	on_key_bonus(int n, t_mlx *mlx)
 		printf("%d\n", n);
 	new_image(mlx, mlx->img);
 }
-
 
 int	on_mouse(int button, int x, int y, t_mlx *mlx)
 {

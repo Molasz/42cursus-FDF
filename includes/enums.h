@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:18:51 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 14:01:42 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:14:00 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,10 @@
 
 enum
 {
-	ON_KEYDOWN = 2,
-	ON_KEYUP = 3,
-	ON_MOUSEDOWN = 4,
-	ON_MOUSEUP = 5,
-	ON_MOUSEMOVE = 6,
-	ON_EXPOSE = 12,
 	ON_DESTROY = 17
 };
 
 # ifndef LINUX
-
-enum
-{
-	ESC = 65307,
-	UP = 65362,
-	DOWN = 65364,
-	RIGHT = 65636,
-	LEFT = 65361
-};
-# else
 
 enum
 {
@@ -44,6 +28,18 @@ enum
 	RIGHT = 125,
 	LEFT = 126
 };
+
+# else
+
+enum
+{
+	ESC = 65307,
+	UP = 65362,
+	DOWN = 65364,
+	RIGHT = 65636,
+	LEFT = 65361
+};
+
 # endif
 
 #endif
