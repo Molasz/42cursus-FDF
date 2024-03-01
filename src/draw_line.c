@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/29 17:17:48 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 12:19:18 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ static void	update_point(t_point *d, t_point *s, t_point *start, int *err)
 	}
 }
 
-static void	update_color(t_color *color, int pxc)
+static void	update_color(t_color *color)
 {
-	color->r += color->dr / pxc;
-	color->g += color->dg / pxc;
-	color->b += color->db / pxc;
+	color->r += color->dr;
+	color->g += color->dg;
+	color->b += color->db;
 }
 
 void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
@@ -67,12 +67,15 @@ void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 	init_line(start, end, &s, &d);
 	err = d.x + d.y;
 	pxc = sqrt((d.x * d.x) + (d.y * d.y));
+	color->dr = color->dr / pxc;
+	color->dg = color->dg / pxc;
+	color->db = color->db / pxc;
 	while (1)
 	{
 		put_pixel(mlx, start.x, start.y, color);
 		if (start.x >= end.x && start.y >= end.y)
 			break ;
 		update_point(&d, &s, &start, &err);
-		update_color(color, pxc);
+		update_color(color);
 	}
 }

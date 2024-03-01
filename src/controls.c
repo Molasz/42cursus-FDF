@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 22:15:54 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/29 22:25:44 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:13:33 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	on_close(t_mlx *mlx)
 	return (0);
 }
 
+#ifndef BONUS
+
 int	on_key(int n, t_mlx *mlx)
 {
 	if (n == 53)
@@ -29,26 +31,21 @@ int	on_key(int n, t_mlx *mlx)
 		on_close(mlx);
 		return (0);
 	}
-	else if (n == 123)
-		mlx->x_shift -= 10;
-	else if (n == 124)
-		mlx->x_shift += 10;
-	else if (n == 125)
-		mlx->y_shift += 10;
-	else if (n == 126)
-		mlx->y_shift -= 10;
-	else if (n == 18 && mlx->angle != 360)
-		mlx->angle += 10;
-	else if (n == 19 && mlx->angle != 0)
-		mlx->angle -= 10;
-	else
-	{
-		printf("%d\n", n);
-		return (0);
-	}
-	new_image(mlx, mlx->img);
 	return (0);
 }
+#else
+
+int	on_key(int n, t_mlx *mlx)
+{
+	if (n == 53)
+	{
+		on_close(mlx);
+		return (0);
+	}
+	on_key_bonus(n, mlx);
+	return (0);
+}
+#endif
 
 int	on_mouse(int button, int x, int y, t_mlx *mlx)
 {

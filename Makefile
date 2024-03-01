@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/29 22:20:04 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/01 13:27:13 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,15 @@ SRCS	= fdf.c \
 			draw_line.c \
 			controls.c
 
+BSRCS	= controls_bonus.c
+
 OBJS	= ${addprefix obj/, ${SRCS:.c=.o}}
 
+BOBJS	= ${addprefix obj/, ${BSRCS:.c=.o}}
+
 DEPS	= ${addprefix obj/, ${SRCS:.c=.d}}
+
+BDEPS	= ${addprefix obj/, ${BSRCS:.c=.d}}
 
 NAME	= fdf
 
@@ -29,45 +35,61 @@ CC		= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
 
+MXFLAGS	= -Llibs/mlx -lmlx -framework OpenGL -framework AppKit
+
 LIBFT	= libs/libft/libft.a
 
-OS		= MAC
+MLXLIB	= mlx
 
 all:		dir ${NAME}
 
-linux:		
-				${MAKE} OS=LINUX all
+linux:
+				${MAKE} MLXLIB=mlx_linux MXFLAGS="libs/mlx_linux/libmlx.a -lXext -lX11 -lm -lz" all
+
+bonus:
+				${MAKE} BONUS=1 all
+
+linuxb:
+				${MAKE} BONUS=1 linux
 
 dir:
 				mkdir -p obj
 				make -C libs/libft
-ifeq (${OS}, MAC)
-				make -C libs/mlx
-else
-				make -C libs/mlx_linux
-endif
+				make -C libs/${MLXLIB}
 
 obj/%.o:	src/%.c Makefile
-				${CC} ${CFLAGS} -c $< -MMD -o $@
-
-${NAME}:	${OBJS} dir
-				@echo OS:${OS}
-ifeq (${OS}, MAC)
-				${CC} ${CFLAGS} ${OBJS} ${LIBFT} -Llibs/mlx -lmlx -framework OpenGL -framework AppKit -o ${NAME}
+ifdef BONUS
+ifdef LINUX
+				${CC} ${CFLAGS} -c $< -MMD -o $@ -D BONUS=1 LINUX=1
 else
-				${CC} ${CFLAGS} ${OBJS} ${LIBFT} libs/mlx_linux/libmlx.a -lXext -lX11 -lm -lz -o ${NAME}
+				${CC} ${CFLAGS} -c $< -MMD -o $@ -D BONUS=1
+endif
+else
+ifdef LINUX
+				${CC} ${CFLAGS} -c $< -MMD -o $@ -D LINUX=1
+else
+				${CC} ${CFLAGS} -c $< -MMD -o $@
+endif
+endif
+
+ifdef BONUS
+${NAME}:	${OBJS} ${BOBJS} dir
+				${CC} ${CFLAGS} ${OBJS} ${BOBJS} ${LIBFT} ${MXFLAGS} -o ${NAME}
+else
+${NAME}:	${OBJS} dir
+				${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MXFLAGS} -o ${NAME}
 endif
 
 clean:
 				make fclean -C libs/libft
 				make clean -C libs/mlx
-				${RM} obj/ 
+				${RM} obj/
 
 fclean:		clean
 				${RM} ${NAME}
 
 re:			fclean all
 
--include ${DEPS}
+-include ${DEPS} ${BDEPS}
 
-.PHONY:		clean fclean re all linux
+.PHONY:		clean fclean re all linux bonus linuxb
