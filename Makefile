@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/03/01 13:38:11 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/01 15:41:14 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ MLXLIB	= mlx
 all:		dir ${NAME}
 
 linux:
-				${MAKE} MLXLIB=mlx_linux MXFLAGS="libs/mlx_linux/libmlx.a -lXext -lX11 -lm -lz" all
+				${MAKE} LINUX=1 MLXLIB=mlx_linux MXFLAGS="libs/mlx_linux/libmlx.a -lXext -lX11 -lm -lz" all
 
 bonus:
 				${MAKE} BONUS=1 all

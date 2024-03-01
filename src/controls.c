@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 22:15:54 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 14:12:49 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:41:36 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ static int	on_key(int n, t_mlx *mlx)
 static int	on_key(int n, t_mlx *mlx)
 {
 	if (n == ESC)
-	{
 		on_close(mlx);
-		return (0);
-	}
-	on_key_bonus(n, mlx);
+	else
+		on_key_bonus(n, mlx);
 	return (0);
 }
 #endif
