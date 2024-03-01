@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/03/01 23:57:26 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/02 00:00:51 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,18 +71,31 @@ dir:
 				make -C libs/${MLXLIB}
 
 obj/%.o:	src/%.c Makefile
-ifdef BONUS
-ifdef LINUX
-				${CC} ${CFLAGS} -c $< -MMD -o $@ -D BONUS=1 -D LINUX=1
-else
-				${CC} ${CFLAGS} -c $< -MMD -o $@ -D BONUS=1
-endif
-else
-ifdef LINUX
-				${CC} ${CFLAGS} -c $< -MMD -o $@ -D LINUX=1
-else
+
+ifndef BONUS
+
+ ifndef LINUX
+
 				${CC} ${CFLAGS} -c $< -MMD -o $@
-endif
+
+ else
+
+				${CC} ${CFLAGS} -c $< -MMD -o $@ -D LINUX=1
+
+ endif
+
+else
+
+ ifndef LINUX
+
+				${CC} ${CFLAGS} -c $< -MMD -o $@ -D BONUS=1
+
+ else
+
+				${CC} ${CFLAGS} -c $< -MMD -o $@ -D BONUS=1 -D LINUX=1
+
+ endif
+
 endif
 
 clean:
