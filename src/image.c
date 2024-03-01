@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 18:00:31 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:23:18 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,36 @@
 
 static void	calc_color(t_mlx *mlx, t_color *color, t_point start, t_point end)
 {
-	color->r = mlx->coords[start.y][start.x].r;
-	color->g = mlx->coords[start.y][start.x].g;
-	color->b = mlx->coords[start.y][start.x].b;
-	color->dr = mlx->coords[end.y][end.x].r - mlx->coords[start.y][start.x].r;
-	color->dg = mlx->coords[end.y][end.x].g - mlx->coords[start.y][start.x].g;
-	color->db = mlx->coords[end.y][end.x].b - mlx->coords[start.y][start.x].b;
+	color->r = mlx->coords[(int) start.y][(int) start.x].r;
+	color->g = mlx->coords[(int) start.y][(int) start.x].g;
+	color->b = mlx->coords[(int) start.y][(int) start.x].b;
+	color->dr = mlx->coords[(int) end.y][(int) end.x].r
+		- mlx->coords[(int) start.y][(int) start.x].r;
+	color->dg = mlx->coords[(int) end.y][(int) end.x].g
+		- mlx->coords[(int) start.y][(int) start.x].g;
+	color->db = mlx->coords[(int) end.y][(int) end.x].b
+		- mlx->coords[(int) start.y][(int) start.x].b;
 }
 
 static void	calc_line(t_mlx *mlx, t_point start, t_point end)
 {
 	t_color	color;
 	int		z;
-	double	x_angle;
-	double	y_angle;
 
-	x_angle = mlx->x_angle / 180.0;
-	y_angle = mlx->y_angle / 180.0;
 	calc_color(mlx, &color, start, end);
-	z = mlx->coords[start.y][start.x].z * mlx->z_scale * mlx->xy_scale;
+	z = mlx->coords[(int) start.y][(int) start.x].z
+		* mlx->z_scale * mlx->xy_scale;
 	start.x *= mlx->xy_scale;
 	start.y *= mlx->xy_scale;
-	start.x = (start.x - start.y) * cos(x_angle);
-	start.y = (start.x + start.y) * sin(y_angle) - z;
+	start.x = (start.x - start.y) * cos(mlx->x_angle);
+	start.y = (start.x + start.y) * sin(mlx->y_angle) - z;
 	start.x += mlx->x_shift;
 	start.y += mlx->y_shift;
-	z = mlx->coords[end.y][end.x].z * mlx->z_scale * mlx->xy_scale;
+	z = mlx->coords[(int) end.y][(int) end.x].z * mlx->z_scale * mlx->xy_scale;
 	end.x *= mlx->xy_scale;
 	end.y *= mlx->xy_scale;
-	end.x = (end.x - end.y) * cos(x_angle);
-	end.y = (end.x + end.y) * sin(y_angle) - z;
+	end.x = (end.x - end.y) * cos(mlx->x_angle);
+	end.y = (end.x + end.y) * sin(mlx->y_angle) - z;
 	end.x += mlx->x_shift;
 	end.y += mlx->y_shift;
 	draw_line(mlx, start, end, &color);

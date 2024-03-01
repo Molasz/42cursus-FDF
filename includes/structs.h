@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:17:30 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 17:46:48 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:22:06 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ typedef struct s_mlx
 	int		z_max;
 	int		x_shift;
 	int		y_shift;
-	int		x_angle;
-	int		y_angle;
-	double	xy_scale;
-	double	z_scale;
+	float	x_angle;
+	float	y_angle;
+	float	xy_scale;
+	float	z_scale;
 }			t_mlx;
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
+	float	x;
+	float	y;
 }			t_point;
 
 typedef struct s_color

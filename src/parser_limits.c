@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:25:56 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 17:32:40 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:22:24 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static void	set_win_size(t_mlx *mlx)
 	mlx->y_shift = SIZE / 2;
 	mlx->xy_scale = size;
 	mlx->z_max = 1;
-	mlx->x_angle = 160;
-	mlx->y_angle = 160;
+	mlx->x_angle = 0.8;
+	mlx->y_angle = 0.8;
 }
 
 int	parser_limits(char *f, t_mlx *mlx)

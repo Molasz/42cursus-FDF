@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 17:47:45 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:27:50 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,10 @@ static void	put_pixel(t_mlx *mlx, int x, int y, t_color *color)
 {
 	char	*dst;
 
-	if (x < 0 || x > mlx->width || y < 0 || y > mlx->height)
+	if (x < 0 || x >= mlx->width || y < 0 || y >= mlx->height)
 		return ;
 	dst = mlx->img->addr + (y * mlx->img->line_len + x * (mlx->img->bpp / 8));
 	*(unsigned int *)dst = (color->r << 16 | color->g << 8 | color->b);
-}
-
-static void	init_line(t_point start, t_point end, t_point *s, t_point *d)
-{
-	d->x = abs(end.x - start.x);
-	d->y = -abs(end.y - start.y);
-	if (start.x < end.x)
-		s->x = 1;
-	else
-		s->x = -1;
-	if (start.y < end.y)
-		s->y = 1;
-	else
-		s->y = -1;
-}
-
-static void	update_point(t_point *d, t_point *s, t_point *start, int *err)
-{
-	if (*err * 2 >= d->y)
-	{
-		*err += d->y;
-		start->x += s->x;
-	}
-	if (*err * 2 <= d->x)
-	{
-		*err += d->x;
-		start->y += s->y;
-	}
 }
 
 static void	update_color(t_color *color)
@@ -57,25 +29,37 @@ static void	update_color(t_color *color)
 	color->b += color->db;
 }
 
+static	int	out_pixel(t_mlx *mlx, t_point p)
+{
+	if (p.x < 0 || p.x >= mlx->width || p.y < 0 || p.y >= mlx->height)
+		return (1);
+	return (0);
+}
+
 void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 {
-	t_point	d;
-	t_point	s;
-	int		err;
-	float	pxc;
+	t_point	diff;
+	t_point	pixel;
+	int		steps;
 
-	init_line(start, end, &s, &d);
-	err = d.x + d.y;
-	pxc = sqrt((d.x * d.x) + (d.y * d.y));
-	color->dr = color->dr / pxc;
-	color->dg = color->dg / pxc;
-	color->db = color->db / pxc;
-	while (--pxc > 1)
+	if (out_pixel(mlx, start) && out_pixel(mlx, end))
+		return ;
+	diff.x = end.x - start.x;
+	diff.y = end.y - start.y;
+	steps = sqrt(diff.x * diff.x + diff.y * diff.y) + 1;
+	diff.x /= steps;
+	diff.y /= steps;
+	color->dr = color->dr / steps;
+	color->dg = color->dg / steps;
+	color->db = color->db / steps;
+	pixel.x = start.x;
+	pixel.y = start.y;
+	while (steps > 0)
 	{
-		put_pixel(mlx, start.x, start.y, color);
-		if (start.x >= end.x && start.y >= end.y)
-			 break ;
-		update_point(&d, &s, &start, &err);
+		put_pixel(mlx, pixel.x, pixel.y, color);
+		pixel.x += diff.x;
+		pixel.y += diff.y;
 		update_color(color);
+		steps--;
 	}
 }

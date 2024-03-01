@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 17:38:10 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:26:43 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static int	read_file(int fd, t_mlx *mlx)
 			return (on_error_free(coords));
 		y++;
 	}
-	mlx->z_scale = 1.0 / mlx->z_max;
+	mlx->z_scale = 10.0 / mlx->z_max;
 	mlx->coords = coords;
 	return (0);
 }
