@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 13:01:07 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:04:33 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,11 @@ void	on_key_bonus(int n, t_mlx *mlx)
 	else
 		printf("%d\n", n);
 	new_image(mlx, mlx->img);
+}
+
+
+int	on_mouse(int button, int x, int y, t_mlx *mlx)
+{
+	printf("%d %d %d %p\n", button, x, y, mlx);
+	return (0);
 }

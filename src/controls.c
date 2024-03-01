@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 22:15:54 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 13:56:38 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:05:03 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,19 @@ static int	on_key(int n, t_mlx *mlx)
 }
 #endif
 
-static int	on_mouse(int button, int x, int y, t_mlx *mlx)
-{
-	printf("%d %d %d %p\n", button, x, y, mlx);
-	return (0);
-}
+#ifdef BONUS
 
 void	controls(t_mlx *mlx)
 {
 	mlx_hook(mlx->win, ON_DESTROY, 0, on_close, mlx);
 	mlx_key_hook(mlx->win, on_key, mlx);
-	mlx_hook(mlx->win, ON_MOUSEUP, 0, on_mouse, mlx);
+	mlx_mouse_hook(mlx->win, on_mouse, mlx);
 }
+#else
+
+void	controls(t_mlx *mlx)
+{
+	mlx_hook(mlx->win, ON_DESTROY, 0, on_close, mlx);
+	mlx_key_hook(mlx->win, on_key, mlx);
+}
+#endif
