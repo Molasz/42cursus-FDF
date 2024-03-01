@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 18:41:37 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 23:49:06 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,15 @@ int		new_image(t_mlx *mlx, t_img *img);
 void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color);
 void	controls(t_mlx *mlx);
 
+int		on_close(t_mlx *mlx);
+int		on_key(int n, t_mlx *mlx);
+
+# ifdef BONUS
+
+int		on_mouse(int n, int x, int y, t_mlx *mlx);
 void	on_key_bonus(int n, t_mlx *mlx);
-int		on_mouse(int b, int x, int y, t_mlx *mlx);
+void	on_mouse_bonus(int n, t_mlx *mlx);
+
+# endif
 
 #endif

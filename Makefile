@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/03/01 16:46:45 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/01 23:57:26 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRCS	= fdf.c \
 			parser.c \
 			image.c \
 			draw_line.c \
-			controls.c
+			controls.c \
+			controls_events.c
 
 BSRCS	= controls_bonus.c
 
@@ -43,14 +44,26 @@ MLXLIB	= mlx
 
 all:		dir ${NAME}
 
-linux:
-				${MAKE} LINUX=1 MLXLIB=mlx_linux MXFLAGS="libs/mlx_linux/libmlx.a -lXext -lX11 -lm -lz" all
+ifndef BONUS
 
-bonus:
-				${MAKE} BONUS=1 all
+${NAME}:	${OBJS} dir
+				${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MXFLAGS} -o ${NAME}
 
-linuxb:
-				${MAKE} BONUS=1 linux
+else
+
+${NAME}:	${OBJS} ${BOBJS} dir
+				${CC} ${CFLAGS} ${OBJS} ${BOBJS} ${LIBFT} ${MXFLAGS} -o ${NAME}
+
+endif
+
+linux:		clean
+				make LINUX=1 MLXLIB=mlx_linux MXFLAGS="libs/mlx_linux/libmlx.a -lXext -lX11 -lm -lz" all
+
+bonus:		clean
+				make BONUS=1 all
+
+lbonus:		clean
+				make BONUS=1 linux
 
 dir:
 				mkdir -p obj
@@ -72,24 +85,19 @@ else
 endif
 endif
 
-ifdef BONUS
-${NAME}:	${OBJS} ${BOBJS} dir
-				${CC} ${CFLAGS} ${OBJS} ${BOBJS} ${LIBFT} ${MXFLAGS} -o ${NAME}
-else
-${NAME}:	${OBJS} dir
-				${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MXFLAGS} -o ${NAME}
-endif
-
 clean:
 				${RM} obj/
 
+lclean:
+				make MLXLIB=mlx_linux fclean
+
 fclean:		clean
 				make fclean -C libs/libft
-				make clean -C libs/mlx
+				make clean -C libs/${MLXLIB}
 				${RM} ${NAME}
 
 re:			fclean all
 
 -include ${DEPS} ${BDEPS}
 
-.PHONY:		clean fclean re all linux bonus linuxb
+.PHONY:		clean fclean re all linux bonus lbonus lclean

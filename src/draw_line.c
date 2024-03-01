@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 19:27:50 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 22:59:05 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	put_pixel(t_mlx *mlx, int x, int y, t_color *color)
 	if (x < 0 || x >= mlx->width || y < 0 || y >= mlx->height)
 		return ;
 	dst = mlx->img->addr + (y * mlx->img->line_len + x * (mlx->img->bpp / 8));
+	if (*dst)
+		return ;
 	*(unsigned int *)dst = (color->r << 16 | color->g << 8 | color->b);
 }
 
