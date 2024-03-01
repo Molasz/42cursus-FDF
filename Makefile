@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/03/01 15:41:14 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/01 16:46:45 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,11 +81,11 @@ ${NAME}:	${OBJS} dir
 endif
 
 clean:
-				make fclean -C libs/libft
-				make clean -C libs/mlx
 				${RM} obj/
 
 fclean:		clean
+				make fclean -C libs/libft
+				make clean -C libs/mlx
 				${RM} ${NAME}
 
 re:			fclean all

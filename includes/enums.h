@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:18:51 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 15:41:03 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:49:41 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ enum
 	UP = 126,
 	DOWN = 125,
 	RIGHT = 124,
-	LEFT = 123
+	LEFT = 123,
+	W = 13,
+	A = 0,
+	S = 1,
+	D = 2,
+	MOUSE_UP = 4,
+	MOUSE_DOWN = 5
 };
 
 # else
@@ -37,7 +43,13 @@ enum
 	UP = 65362,
 	DOWN = 65364,
 	RIGHT = 65363,
-	LEFT = 65361
+	LEFT = 65361,
+	W = 13,
+	A = 0,
+	S = 1,
+	D = 2,
+	MOUSE_UP = 4,
+	MOUSE_DOWN = 5
 };
 
 # endif

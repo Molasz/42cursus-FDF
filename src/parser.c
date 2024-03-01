@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/29 20:32:21 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:38:10 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_coord	*read_line(char *line, t_mlx *mlx)
 	int		x;
 	int		i;
 
-	coords = malloc((mlx->max_x) * sizeof (t_coord));
+	coords = malloc((mlx->x_max) * sizeof (t_coord));
 	if (!coords)
 		return (NULL);
 	i = 0;
@@ -46,6 +46,8 @@ static t_coord	*read_line(char *line, t_mlx *mlx)
 		while (line[i] == ' ')
 			i++;
 		coords[x].z = ft_atoi(line + i);
+		if (abs(coords[x].z) > mlx->z_max)
+			mlx->z_max = abs(coords[x].z);
 		while (line[i] >= '0' && line[i] <= '9')
 			i++;
 		read_color(coords + x, line + i);
@@ -73,7 +75,7 @@ static int	read_file(int fd, t_mlx *mlx)
 	char	*line;
 	int		y;
 
-	coords = malloc((mlx->max_y) * sizeof (t_coord **));
+	coords = malloc((mlx->y_max) * sizeof (t_coord **));
 	if (!coords)
 		return (1);
 	y = 0;
@@ -88,6 +90,7 @@ static int	read_file(int fd, t_mlx *mlx)
 			return (on_error_free(coords));
 		y++;
 	}
+	mlx->z_scale = 1.0 / mlx->z_max;
 	mlx->coords = coords;
 	return (0);
 }

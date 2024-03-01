@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 12:19:18 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:47:45 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 	t_point	d;
 	t_point	s;
 	int		err;
-	int		pxc;
+	float	pxc;
 
 	init_line(start, end, &s, &d);
 	err = d.x + d.y;
@@ -70,11 +70,11 @@ void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 	color->dr = color->dr / pxc;
 	color->dg = color->dg / pxc;
 	color->db = color->db / pxc;
-	while (1)
+	while (--pxc > 1)
 	{
 		put_pixel(mlx, start.x, start.y, color);
 		if (start.x >= end.x && start.y >= end.y)
-			break ;
+			 break ;
 		update_point(&d, &s, &start, &err);
 		update_color(color);
 	}

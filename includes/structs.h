@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:17:30 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 13:25:10 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:46:48 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,17 @@ typedef struct s_mlx
 	void	*win;
 	t_img	*img;
 	t_coord	**coords;
-	int		max_x;
-	int		max_y;
 	int		width;
 	int		height;
-	int		angle;
-	float	scale;
-	int		zscale;
+	int		x_max;
+	int		y_max;
+	int		z_max;
 	int		x_shift;
 	int		y_shift;
+	int		x_angle;
+	int		y_angle;
+	double	xy_scale;
+	double	z_scale;
 }			t_mlx;
 
 typedef struct s_point
@@ -55,11 +57,11 @@ typedef struct s_point
 
 typedef struct s_color
 {
-	int	r;
-	int	g;
-	int	b;
-	int	dr;
-	int	dg;
-	int	db;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	short			dr;
+	short			dg;
+	short			db;
 }			t_color;
 #endif

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 13:51:26 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:30:26 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_coords(t_mlx *mlx)
 	int	i;
 
 	i = 0;
-	while (i < mlx->max_y)
+	while (i < mlx->y_max)
 		free(mlx->coords[i++]);
 	free(mlx->coords);
 }
