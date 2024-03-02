@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 19:26:43 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:09:29 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void	read_color(t_coord *coord, char *s)
 {
+	coord->r = 0;
+	coord->g = 0;
+	coord->b = 0;
 	if (*s == ',')
 	{
 		coord->r = ft_atohex(s + 3);
@@ -21,12 +24,6 @@ static void	read_color(t_coord *coord, char *s)
 			coord->g = ft_atohex(s + 5);
 		if (s[5] != ' ' && s[7] != ' ')
 			coord->b = ft_atohex(s + 7);
-	}
-	else
-	{
-		coord->r = 255;
-		coord->g = 255;
-		coord->b = 255;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:17:30 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 00:06:13 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:57:54 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ typedef struct s_color
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	b;
-	short			dr;
-	short			dg;
-	short			db;
+	float			dr;
+	float			dg;
+	float			db;
 }			t_color;
 #endif

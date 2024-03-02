@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 19:23:18 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:39:01 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ static void	calc_line(t_mlx *mlx, t_point start, t_point end)
 	int		z;
 
 	calc_color(mlx, &color, start, end);
-	z = mlx->coords[start.y][start.x].z
-		* mlx->z_scale * mlx->xy_scale;
+	z = mlx->coords[start.y][start.x].z * mlx->z_scale * mlx->xy_scale;
 	start.x *= mlx->xy_scale;
 	start.y *= mlx->xy_scale;
 	start.x = (start.x - start.y) * cos(mlx->x_angle);

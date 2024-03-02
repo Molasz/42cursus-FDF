@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 00:07:43 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 12:15:01 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,20 @@ static void	put_pixel(t_mlx *mlx, int x, int y, t_color *color)
 	if (x < 0 || x >= mlx->width || y < 0 || y >= mlx->height)
 		return ;
 	dst = mlx->img->addr + (y * mlx->img->line_len + x * (mlx->img->bpp / 8));
-	if (*dst)
-		return ;
 	*(unsigned int *)dst = (color->r << 16 | color->g << 8 | color->b);
 }
 
 static void	update_color(t_color *color)
 {
-	color->r += color->dr;
-	color->g += color->dg;
-	color->b += color->db;
-}
-
-static	int	out_pixel(t_mlx *mlx, t_point p)
-{
-	if (p.x < 0 || p.x >= mlx->width || p.y < 0 || p.y >= mlx->height)
-		return (1);
-	return (0);
+	if ((color->dr > 0 && color->r + color->dr < 255) 
+			|| (color->dr < 0 && color->r + color->dr > 0))
+		color->r += color->dr;
+	if ((color->dg > 0 && color->g + color->dg < 255) 
+			|| (color->dg < 0 && color->g + color->dg > 0))
+		color->g += color->dg;
+	if ((color->db > 0 && color->b + color->db < 255) 
+			|| (color->db < 0 && color->b + color->db > 0))
+		color->b += color->db;
 }
 
 void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
@@ -44,8 +41,6 @@ void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 	t_foint	pixel;
 	int		steps;
 
-	if (out_pixel(mlx, start) && out_pixel(mlx, end))
-		return ;
 	diff.x = end.x - start.x;
 	diff.y = end.y - start.y;
 	steps = sqrt(diff.x * diff.x + diff.y * diff.y) + 1;
