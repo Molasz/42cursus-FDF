@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:39:30 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/01/30 20:07:54 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 12:23:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,11 @@ static char	*buff_next_line(t_file *file)
 
 char	*get_next_line(int fd)
 {
-	static t_file	files[OPEN_MAX + 1];
+	static t_file	files[10];
 	t_file			*file;
 	char			*next_line;
 
-	if (fd < 0 || fd > OPEN_MAX + 1)
+	if (fd < 0 || fd > 10)
 		return (NULL);
 	file = get_file(files, fd);
 	next_line = buff_next_line(file);

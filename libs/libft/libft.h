@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 10:37:22 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/02/28 22:15:23 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 12:20:56 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct s_list
-{
-	int				x;
-	int				y;
-	int				z;
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	struct s_list	*next;
-}		t_list;
-
 int		ft_atoi(const char *str);
 int		ft_atohex(const char *str);
-
-t_list	*ft_lstnew(int x, int y, int z);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *n);
-void	ft_lstclear(t_list **lst);
 
 #endif

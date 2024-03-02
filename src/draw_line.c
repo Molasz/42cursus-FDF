@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 12:15:01 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 12:19:47 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ static void	put_pixel(t_mlx *mlx, int x, int y, t_color *color)
 
 static void	update_color(t_color *color)
 {
-	if ((color->dr > 0 && color->r + color->dr < 255) 
-			|| (color->dr < 0 && color->r + color->dr > 0))
+	if ((color->dr > 0 && color->r + color->dr < 255)
+		|| (color->dr < 0 && color->r + color->dr > 0))
 		color->r += color->dr;
-	if ((color->dg > 0 && color->g + color->dg < 255) 
-			|| (color->dg < 0 && color->g + color->dg > 0))
+	if ((color->dg > 0 && color->g + color->dg < 255)
+		|| (color->dg < 0 && color->g + color->dg > 0))
 		color->g += color->dg;
-	if ((color->db > 0 && color->b + color->db < 255) 
-			|| (color->db < 0 && color->b + color->db > 0))
+	if ((color->db > 0 && color->b + color->db < 255)
+		|| (color->db < 0 && color->b + color->db > 0))
 		color->b += color->db;
 }
 

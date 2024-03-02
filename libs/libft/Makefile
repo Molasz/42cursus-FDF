@@ -6,12 +6,11 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 19:20:08 by molasz-a          #+#    #+#              #
-#    Updated: 2024/02/25 20:15:03 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/02 12:20:40 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	= ft_atoi.c \
-			lst_utils.c \
 			get_next_line.c \
 			get_next_line_utils.c
 
