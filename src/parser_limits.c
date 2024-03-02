@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:25:56 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 13:30:12 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 16:29:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ static void	set_win_size(t_mlx *mlx)
 
 	if (mlx->x_max > mlx->y_max)
 	{
-		mlx->width = SIZE;
-		size = SIZE / 2.0 / mlx->x_max;
-		mlx->height = size * (mlx->y_max + 1) + (SIZE / 2);
+		mlx->width = WIN_SIZE;
+		size = WIN_SIZE / 2.0 / mlx->x_max;
+		mlx->height = size * (mlx->y_max + 1) + (WIN_SIZE / 2);
 	}
 	else
 	{
-		mlx->height = SIZE;
-		size = SIZE / 2.0 / mlx->y_max;
-		mlx->width = size * (mlx->x_max + 1) + (SIZE / 2);
+		mlx->height = WIN_SIZE;
+		size = WIN_SIZE / 2.0 / mlx->y_max;
+		mlx->width = size * (mlx->x_max + 1) + (WIN_SIZE / 2);
 	}
-	mlx->x_shift = SIZE / 2;
-	mlx->y_shift = SIZE / 2;
+	mlx->x_shift = WIN_SIZE / 2;
+	mlx->y_shift = WIN_SIZE / 2;
 	mlx->xy_scale = size;
 	mlx->z_max = 1;
 	mlx->x_angle = 0.8;

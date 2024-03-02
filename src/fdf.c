@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 12:17:01 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:47:37 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
 	t_img	img;
+	t_img	menu;
 
 	if (argc == 2)
 	{
@@ -79,7 +80,7 @@ int	main(int argc, char **argv)
 		if (!mlx.mlx)
 			on_error(&mlx);
 		mlx.win = mlx_new_window(mlx.mlx, mlx.width, mlx.height, "FDF");
-		if (!mlx.win || new_image(&mlx, &img))
+		if (!mlx.win || new_image(&mlx, &img) || new_menu(&mlx, &menu))
 			on_error(&mlx);
 		controls(&mlx);
 		mlx_loop(mlx.mlx);

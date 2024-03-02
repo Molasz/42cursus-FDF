@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/03/02 12:48:31 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/02 15:42:37 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRCS	= fdf.c \
 			image.c \
 			draw_line.c \
 			controls.c \
-			controls_events.c
+			controls_events.c \
+			menu.c
 
 BSRCS	= controls_bonus.c
 

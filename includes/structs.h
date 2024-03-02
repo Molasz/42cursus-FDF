@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:17:30 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 13:29:58 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:48:32 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*win;
 	t_img	*img;
+	t_img	*menu;
 	t_coord	**coords;
 	int		width;
 	int		height;

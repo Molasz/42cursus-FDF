@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 14:28:48 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:57:27 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,22 @@ static void	update_color(t_color *color)
 		color->b += color->db;
 }
 
+static int	invalid_coord(t_mlx *mlx, t_point *coord)
+{
+	if (coord->x < 0 || coord->x >= mlx->width
+		|| coord->y < 0 || coord->y >= mlx->height)
+		return (1);
+	return (0);
+}
+
 void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 {
 	t_foint	diff;
 	t_foint	pixel;
 	int		steps;
 
+	if (invalid_coord(mlx, &start) && invalid_coord(mlx, &end))
+		return ;
 	diff.x = end.x - start.x;
 	diff.y = end.y - start.y;
 	steps = sqrt(diff.x * diff.x + diff.y * diff.y) + 1;
