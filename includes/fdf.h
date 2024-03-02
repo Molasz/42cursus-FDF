@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 23:49:06 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 14:29:06 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	free_coords(t_mlx *mlx);
 int		parser_limits(char *f, t_mlx *mlx);
 int		parser(char *f, t_mlx *mlx);
 int		new_image(t_mlx *mlx, t_img *img);
+void	calc_color(t_mlx *mlx, t_color *color, t_point start, t_point end);
 void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color);
 void	controls(t_mlx *mlx);
 

@@ -6,25 +6,15 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 14:16:49 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 14:38:36 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void	calc_color(t_mlx *mlx, t_color *color, t_point start, t_point end)
-{
-	color->r = mlx->coords[start.y][start.x].r;
-	color->g = mlx->coords[start.y][start.x].g;
-	color->b = mlx->coords[start.y][start.x].b;
-	color->dr = mlx->coords[end.y][end.x].r - mlx->coords[start.y][start.x].r;
-	color->dg = mlx->coords[end.y][end.x].g - mlx->coords[start.y][start.x].g;
-	color->db = mlx->coords[end.y][end.x].b - mlx->coords[start.y][start.x].b;
-}
-
 static void	calc_isometric(t_mlx *mlx, t_point *start, t_point *end)
 {
-	int		z;
+	int	z;
 
 	z = mlx->coords[start->y][start->x].z * mlx->z_scale * mlx->xy_scale;
 	start->x *= mlx->xy_scale;
@@ -44,23 +34,20 @@ static void	calc_isometric(t_mlx *mlx, t_point *start, t_point *end)
 
 static void	calc_prespective(t_mlx *mlx, t_point *start, t_point *end)
 {
-	int		z;
+	int	z;
 
 	z = mlx->coords[start->y][start->x].z * mlx->z_scale * mlx->xy_scale;
-	start->x *= mlx->xy_scale * 100;
-	start->y *= mlx->xy_scale * 100;
-	start->x = start->x / (z * tan(mlx->x_angle));
-	start->y = start->y / (z * tan(mlx->y_angle));
+	start->x *= mlx->xy_scale;
+	start->y *= mlx->xy_scale;
+	start->x = start->x / (z * tan(mlx->x_angle / 2));
+	start->y = start->y / (z * tan(mlx->y_angle / 2));
 	start->x += mlx->x_shift;
 	start->y += mlx->y_shift;
-
-
-	
 	z = mlx->coords[end->y][end->x].z * mlx->z_scale * mlx->xy_scale;
-	end->x *= mlx->xy_scale * 100;
-	end->y *= mlx->xy_scale * 100;
-	end->x = end->x / (z * tan(mlx->x_angle));
-	end->y = end->y / (z * tan(mlx->y_angle));
+	end->x *= mlx->xy_scale;
+	end->y *= mlx->xy_scale;
+	end->x = end->x / (z * tan(mlx->x_angle / 2));
+	end->y = end->y / (z * tan(mlx->y_angle / 2));
 	end->x += mlx->x_shift;
 	end->y += mlx->y_shift;
 }

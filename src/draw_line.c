@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 12:19:47 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 14:28:48 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,14 @@ void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 		update_color(color);
 		steps--;
 	}
+}
+
+void	calc_color(t_mlx *mlx, t_color *color, t_point start, t_point end)
+{
+	color->r = mlx->coords[start.y][start.x].r;
+	color->g = mlx->coords[start.y][start.x].g;
+	color->b = mlx->coords[start.y][start.x].b;
+	color->dr = mlx->coords[end.y][end.x].r - mlx->coords[start.y][start.x].r;
+	color->dg = mlx->coords[end.y][end.x].g - mlx->coords[start.y][start.x].g;
+	color->db = mlx->coords[end.y][end.x].b - mlx->coords[start.y][start.x].b;
 }
