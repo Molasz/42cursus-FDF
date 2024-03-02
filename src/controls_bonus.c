@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 16:38:18 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:54:37 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	on_key_bonus(int n, t_mlx *mlx)
 {
-	printf("%d\n", n);
 	if (n == LEFT)
 		mlx->x_shift += 10;
 	else if (n == RIGHT)
