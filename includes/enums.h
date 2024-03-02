@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:18:51 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 23:37:30 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 13:37:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ enum
 	S = 1,
 	D = 2,
 	MOUSE_UP = 4,
-	MOUSE_DOWN = 5
+	MOUSE_DOWN = 5,
+	ISOMETRIC = 18,
+	PRESPETIVE = 19
 };
 
 # else
@@ -50,7 +52,9 @@ enum
 	S = 115,
 	D = 100,
 	MOUSE_UP = 4,
-	MOUSE_DOWN = 5
+	MOUSE_DOWN = 5,
+	ISOMETRIC = 18,
+	PRESPETIVE = 19
 };
 
 # endif

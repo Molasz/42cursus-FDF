@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/03/02 00:00:51 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/02 12:48:31 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ CC		= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
 
-MXFLAGS	= -Llibs/mlx -lmlx -framework OpenGL -framework AppKit
+MXFLAGS	= -Llibs/mlx -lmlx -framework OpenGL -framework AppKit -lm
 
 LIBFT	= libs/libft/libft.a
 
@@ -56,13 +56,13 @@ ${NAME}:	${OBJS} ${BOBJS} dir
 
 endif
 
-linux:		clean
+linux:
 				make LINUX=1 MLXLIB=mlx_linux MXFLAGS="libs/mlx_linux/libmlx.a -lXext -lX11 -lm -lz" all
 
-bonus:		clean
+bonus:
 				make BONUS=1 all
 
-lbonus:		clean
+lbonus:
 				make BONUS=1 linux
 
 dir:

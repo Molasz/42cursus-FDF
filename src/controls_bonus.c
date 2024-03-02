@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 23:26:52 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 13:56:34 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	on_key_bonus(int n, t_mlx *mlx)
 {
+	printf("%d\n", n);
 	if (n == LEFT)
 		mlx->x_shift += 10;
 	else if (n == RIGHT)
@@ -30,6 +31,10 @@ void	on_key_bonus(int n, t_mlx *mlx)
 		mlx->x_angle += 0.1;
 	else if (n == D)
 		mlx->x_angle -= 0.1;
+	else if (n == ISOMETRIC)
+		mlx->projection = 0;
+	else if (n == PRESPETIVE)
+		mlx->projection = 1;
 	else
 		return ;
 	new_image(mlx, mlx->img);

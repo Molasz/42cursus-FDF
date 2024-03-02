@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 10:39:01 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 14:16:49 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,58 @@ static void	calc_color(t_mlx *mlx, t_color *color, t_point start, t_point end)
 	color->db = mlx->coords[end.y][end.x].b - mlx->coords[start.y][start.x].b;
 }
 
+static void	calc_isometric(t_mlx *mlx, t_point *start, t_point *end)
+{
+	int		z;
+
+	z = mlx->coords[start->y][start->x].z * mlx->z_scale * mlx->xy_scale;
+	start->x *= mlx->xy_scale;
+	start->y *= mlx->xy_scale;
+	start->x = (start->x - start->y) * cos(mlx->x_angle);
+	start->y = (start->x + start->y) * sin(mlx->y_angle) - z;
+	start->x += mlx->x_shift;
+	start->y += mlx->y_shift;
+	z = mlx->coords[end->y][end->x].z * mlx->z_scale * mlx->xy_scale;
+	end->x *= mlx->xy_scale;
+	end->y *= mlx->xy_scale;
+	end->x = (end->x - end->y) * cos(mlx->x_angle);
+	end->y = (end->x + end->y) * sin(mlx->y_angle) - z;
+	end->x += mlx->x_shift;
+	end->y += mlx->y_shift;
+}
+
+static void	calc_prespective(t_mlx *mlx, t_point *start, t_point *end)
+{
+	int		z;
+
+	z = mlx->coords[start->y][start->x].z * mlx->z_scale * mlx->xy_scale;
+	start->x *= mlx->xy_scale * 100;
+	start->y *= mlx->xy_scale * 100;
+	start->x = start->x / (z * tan(mlx->x_angle));
+	start->y = start->y / (z * tan(mlx->y_angle));
+	start->x += mlx->x_shift;
+	start->y += mlx->y_shift;
+
+
+	
+	z = mlx->coords[end->y][end->x].z * mlx->z_scale * mlx->xy_scale;
+	end->x *= mlx->xy_scale * 100;
+	end->y *= mlx->xy_scale * 100;
+	end->x = end->x / (z * tan(mlx->x_angle));
+	end->y = end->y / (z * tan(mlx->y_angle));
+	end->x += mlx->x_shift;
+	end->y += mlx->y_shift;
+}
+
 static void	calc_line(t_mlx *mlx, t_point start, t_point end)
 {
 	t_color	color;
-	int		z;
 
 	calc_color(mlx, &color, start, end);
-	z = mlx->coords[start.y][start.x].z * mlx->z_scale * mlx->xy_scale;
-	start.x *= mlx->xy_scale;
-	start.y *= mlx->xy_scale;
-	start.x = (start.x - start.y) * cos(mlx->x_angle);
-	start.y = (start.x + start.y) * sin(mlx->y_angle) - z;
-	start.x += mlx->x_shift;
-	start.y += mlx->y_shift;
-	z = mlx->coords[end.y][end.x].z * mlx->z_scale * mlx->xy_scale;
-	end.x *= mlx->xy_scale;
-	end.y *= mlx->xy_scale;
-	end.x = (end.x - end.y) * cos(mlx->x_angle);
-	end.y = (end.x + end.y) * sin(mlx->y_angle) - z;
-	end.x += mlx->x_shift;
-	end.y += mlx->y_shift;
+	if (!mlx->projection)
+		calc_isometric(mlx, &start, &end);
+	else
+		calc_prespective(mlx, &start, &end);
 	draw_line(mlx, start, end, &color);
 }
 
