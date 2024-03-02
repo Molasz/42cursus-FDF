@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 16:42:41 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 00:00:58 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <fcntl.h>
 
 # define WIN_SIZE 1280
-# define MENU_SIZE 300
 
 void	free_coords(t_mlx *mlx);
 int		parser_limits(char *f, t_mlx *mlx);

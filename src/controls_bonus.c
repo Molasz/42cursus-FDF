@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 17:54:37 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 23:58:34 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	on_key_bonus(int n, t_mlx *mlx)
 		mlx->projection = !mlx->projection;
 	else
 		return ;
-	printf("%d\n", mlx->projection);
 	new_image(mlx, mlx->img);
 	new_menu(mlx, mlx->menu);
 }
@@ -48,4 +47,5 @@ void	on_mouse_bonus(int n, t_mlx *mlx)
 	else
 		return ;
 	new_image(mlx, mlx->img);
+	new_menu(mlx, mlx->menu);
 }
