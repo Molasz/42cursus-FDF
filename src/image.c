@@ -14,15 +14,12 @@
 
 static void	calc_color(t_mlx *mlx, t_color *color, t_point start, t_point end)
 {
-	color->r = mlx->coords[(int) start.y][(int) start.x].r;
-	color->g = mlx->coords[(int) start.y][(int) start.x].g;
-	color->b = mlx->coords[(int) start.y][(int) start.x].b;
-	color->dr = mlx->coords[(int) end.y][(int) end.x].r
-		- mlx->coords[(int) start.y][(int) start.x].r;
-	color->dg = mlx->coords[(int) end.y][(int) end.x].g
-		- mlx->coords[(int) start.y][(int) start.x].g;
-	color->db = mlx->coords[(int) end.y][(int) end.x].b
-		- mlx->coords[(int) start.y][(int) start.x].b;
+	color->r = mlx->coords[start.y][start.x].r;
+	color->g = mlx->coords[start.y][start.x].g;
+	color->b = mlx->coords[start.y][start.x].b;
+	color->dr = mlx->coords[end.y][end.x].r - mlx->coords[start.y][start.x].r;
+	color->dg = mlx->coords[end.y][end.x].g - mlx->coords[start.y][start.x].g;
+	color->db = mlx->coords[end.y][end.x].b - mlx->coords[start.y][start.x].b;
 }
 
 static void	calc_line(t_mlx *mlx, t_point start, t_point end)
@@ -31,7 +28,7 @@ static void	calc_line(t_mlx *mlx, t_point start, t_point end)
 	int		z;
 
 	calc_color(mlx, &color, start, end);
-	z = mlx->coords[(int) start.y][(int) start.x].z
+	z = mlx->coords[start.y][start.x].z
 		* mlx->z_scale * mlx->xy_scale;
 	start.x *= mlx->xy_scale;
 	start.y *= mlx->xy_scale;
@@ -39,7 +36,7 @@ static void	calc_line(t_mlx *mlx, t_point start, t_point end)
 	start.y = (start.x + start.y) * sin(mlx->y_angle) - z;
 	start.x += mlx->x_shift;
 	start.y += mlx->y_shift;
-	z = mlx->coords[(int) end.y][(int) end.x].z * mlx->z_scale * mlx->xy_scale;
+	z = mlx->coords[end.y][end.x].z * mlx->z_scale * mlx->xy_scale;
 	end.x *= mlx->xy_scale;
 	end.y *= mlx->xy_scale;
 	end.x = (end.x - end.y) * cos(mlx->x_angle);

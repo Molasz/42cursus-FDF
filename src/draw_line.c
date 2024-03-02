@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 22:59:05 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/02 00:07:43 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static	int	out_pixel(t_mlx *mlx, t_point p)
 
 void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 {
-	t_point	diff;
-	t_point	pixel;
+	t_foint	diff;
+	t_foint	pixel;
 	int		steps;
 
 	if (out_pixel(mlx, start) && out_pixel(mlx, end))
