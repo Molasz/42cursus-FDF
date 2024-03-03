@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 17:09:53 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:02:12 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,24 @@ static int	invalid_coord(t_mlx *mlx, t_point *coord)
 	return (0);
 }
 
-void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
+void	draw_line(t_mlx *mlx, t_point *start, t_point *end, t_color *color)
 {
 	t_foint	diff;
 	t_foint	pixel;
 	int		steps;
 
-	if (invalid_coord(mlx, &start) && invalid_coord(mlx, &end))
+	if (invalid_coord(mlx, start) && invalid_coord(mlx, end))
 		return ;
-	diff.x = end.x - start.x;
-	diff.y = end.y - start.y;
+	pixel.x = start->x;
+	pixel.y = start->y;
+	diff.x = end->x - start->x;
+	diff.y = end->y - start->y;
 	steps = sqrt(diff.x * diff.x + diff.y * diff.y) + 1;
 	diff.x /= steps;
 	diff.y /= steps;
 	color->dr = color->dr / steps;
 	color->dg = color->dg / steps;
 	color->db = color->db / steps;
-	pixel.x = start.x;
-	pixel.y = start.y;
 	while (steps > 0)
 	{
 		put_pixel(mlx, pixel.x, pixel.y, color);
@@ -69,14 +69,4 @@ void	draw_line(t_mlx *mlx, t_point start, t_point end, t_color *color)
 		update_color(color);
 		steps--;
 	}
-}
-
-void	calc_color(t_mlx *mlx, t_color *color, t_point start, t_point end)
-{
-	color->r = mlx->coords[start.y][start.x].r;
-	color->g = mlx->coords[start.y][start.x].g;
-	color->b = mlx->coords[start.y][start.x].b;
-	color->dr = mlx->coords[end.y][end.x].r - mlx->coords[start.y][start.x].r;
-	color->dg = mlx->coords[end.y][end.x].g - mlx->coords[start.y][start.x].g;
-	color->db = mlx->coords[end.y][end.x].b - mlx->coords[start.y][start.x].b;
 }

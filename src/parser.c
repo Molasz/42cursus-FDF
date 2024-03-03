@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 16:40:00 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 23:50:28 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_coord	*read_line(char *line, t_mlx *mlx)
 	int		x;
 	int		i;
 
-	coords = malloc((mlx->x_max) * sizeof (t_coord));
+	coords = malloc(mlx->x_max * sizeof (t_coord));
 	if (!coords)
 		return (NULL);
 	i = 0;
@@ -70,11 +70,13 @@ static int	on_error_free(t_coord **coords)
 static int	read_file(int fd, t_mlx *mlx)
 {
 	t_coord	**coords;
+	t_point	**points;
 	char	*line;
 	int		y;
 
 	coords = malloc((mlx->y_max) * sizeof (t_coord **));
-	if (!coords)
+	points = malloc((mlx->y_max) * sizeof (t_point **));
+	if (!coords | !points)
 		return (1);
 	y = 0;
 	while (1)
@@ -83,13 +85,14 @@ static int	read_file(int fd, t_mlx *mlx)
 		if (!line)
 			break ;
 		coords[y] = read_line(line, mlx);
+		points[y] = malloc(mlx->x_max * sizeof (t_point));
 		free(line);
-		if (!coords[y])
+		if (!coords[y] || !points[y])
 			return (on_error_free(coords));
 		y++;
 	}
-	mlx->z_scale = 10.0 / mlx->z_max;
 	mlx->coords = coords;
+	mlx->points = points;
 	return (0);
 }
 
@@ -102,5 +105,6 @@ int	parser(char *file, t_mlx *mlx)
 		return (1);
 	if (read_file(fd, mlx))
 		return (1);
+	mlx->z_scale = 10.0 / mlx->z_max;
 	return (0);
 }

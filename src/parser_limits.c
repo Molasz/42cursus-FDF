@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:25:56 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 16:36:45 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 20:00:18 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	count_x(char *line)
 
 static void	set_win_size(t_mlx *mlx)
 {
-	float	size;
+	double	size;
 
 	if (mlx->x_max > mlx->y_max)
 	{

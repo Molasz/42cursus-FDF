@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/03/03 12:51:45 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/03 23:38:53 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS	= fdf.c \
 			parser_limits.c \
 			parser.c \
 			image.c \
+			calc_coords.c \
 			draw_line.c \
 			controls.c \
 			controls_events.c \
