@@ -6,11 +6,39 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 23:58:34 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 12:39:59 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+static void	on_angle_update(int n, t_mlx *mlx)
+{
+	if (n == W)
+	{
+		if ((int) mlx->y_angle == 2)
+			mlx->y_angle = -2;
+		mlx->y_angle += 0.1;
+	}
+	else if (n == S)
+	{
+		if ((int) mlx->y_angle == -2)
+			mlx->y_angle = 2;
+		mlx->y_angle -= 0.1;
+	}
+	else if (n == A)
+	{
+		if ((int) mlx->x_angle == 2)
+			mlx->x_angle = -2;
+		mlx->x_angle += 0.1;
+	}
+	else if (n == D)
+	{
+		if ((int) mlx->x_angle == -2)
+			mlx->x_angle = 2;
+		mlx->x_angle -= 0.1;
+	}
+}
 
 void	on_key_bonus(int n, t_mlx *mlx)
 {
@@ -22,16 +50,10 @@ void	on_key_bonus(int n, t_mlx *mlx)
 		mlx->y_shift += 10;
 	else if (n == DOWN)
 		mlx->y_shift -= 10;
-	else if (n == W)
-		mlx->y_angle += 0.1;
-	else if (n == S)
-		mlx->y_angle -= 0.1;
-	else if (n == A)
-		mlx->x_angle += 0.1;
-	else if (n == D)
-		mlx->x_angle -= 0.1;
 	else if (n == TAB)
 		mlx->projection = !mlx->projection;
+	else if (n == W || n == A || n == S || n == D)
+		on_angle_update(n, mlx);
 	else
 		return ;
 	new_image(mlx, mlx->img);

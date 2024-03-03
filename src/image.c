@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 15:43:59 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 12:57:45 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static void	calc_prespective(t_mlx *mlx, t_point *start, t_point *end)
 	int	z;
 
 	z = mlx->coords[start->y][start->x].z * mlx->z_scale * mlx->xy_scale;
-	start->x *= mlx->xy_scale * 30;
-	start->y *= mlx->xy_scale * 30;
-	start->x /= z * tan(mlx->x_angle / 2);
-	start->y /= z * tan(mlx->y_angle / 2);
+	start->x *= mlx->xy_scale;
+	start->y *= mlx->xy_scale;
+	start->x /= start->y * tan(mlx->x_angle / 2);
+	start->y = z / (start->y * tan(mlx->y_angle / 2));
 	start->x += mlx->x_shift;
 	start->y += mlx->y_shift;
 	z = mlx->coords[end->y][end->x].z * mlx->z_scale * mlx->xy_scale;

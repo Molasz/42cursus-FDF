@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:18:51 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 00:29:10 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 12:53:42 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ enum
 enum
 {
 	MENU_SIZE = 300,
-	SPACE = 20,
-	CHEAD_X = 65,
-	CHEAD_Y = 5,
-	C_X = 15,
-	C_Y = 30,
+	SPACE = 25,
 	IHEAD_X = 55,
-	IHEAD_Y = 150,
+	IHEAD_Y = 5,
 	I_X = 25,
-	I_Y = 175,
-	VHEAD_X = 70,
-	VHEAD_Y = 300,
+	I_Y = 30,
+	CHEAD_X = 60,
+	CHEAD_Y = 170,
+	C_X = 15,
+	C_Y = 195,
+	VHEAD_X = 50,
+	VHEAD_Y = 340,
 	V_X = 25,
-	V_Y = 325
+	V_Y = 365
 };
 
 # else
@@ -77,14 +77,14 @@ enum
 {
 	MENU_SIZE = 240,
 	SPACE = 20,
-	CHEAD_X = 50,
-	CHEAD_Y = 25,
-	C_X = 15,
-	C_Y = 50,
 	IHEAD_X = 55,
-	IHEAD_Y = 175,
+	IHEAD_Y = 25,
 	I_X = 25,
-	I_Y = 200,
+	I_Y = 50,
+	CHEAD_X = 50,
+	CHEAD_Y = 175,
+	C_X = 15,
+	C_Y = 200,
 	VHEAD_X = 50,
 	VHEAD_Y = 325,
 	V_X = 25,
