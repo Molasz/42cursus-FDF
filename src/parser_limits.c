@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:25:56 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 20:00:18 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:42:54 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	set_win_size(t_mlx *mlx)
 		size = WIN_SIZE / 2.0 / mlx->y_max;
 		mlx->width = size * (mlx->x_max + 1) + (WIN_SIZE / 2);
 	}
-	mlx->x_shift = WIN_SIZE / 2;
+	mlx->x_shift = WIN_SIZE / 2 + MENU_SIZE;
 	mlx->y_shift = WIN_SIZE / 2;
 	mlx->xy_scale = size;
 	mlx->z_max = 1;

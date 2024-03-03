@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 23:37:42 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:18:00 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int		parser(char *f, t_mlx *mlx);
 int		new_image(t_mlx *mlx, t_img *img);
 void	calc_coords(t_mlx *mlx);
 void	draw_line(t_mlx *mlx, t_point *start, t_point *end, t_color *color);
-void	controls(t_mlx *mlx);
-int		new_menu(t_mlx *mlx, t_img *menu);
-int		on_close(t_mlx *mlx);
-int		on_key(int n, t_mlx *mlx);
 void	fill_menu(t_mlx *mlx);
 void	write_var(t_mlx *mlx, int x, int y, char *str);
 void	write_white(t_mlx *mlx, int x, int y, char *str);
+void	controls(t_mlx *mlx);
+int		on_close(t_mlx *mlx);
+int		on_key(int n, t_mlx *mlx);
+int		new_menu(t_mlx *mlx, t_img *menu);
 
 # ifdef BONUS
 

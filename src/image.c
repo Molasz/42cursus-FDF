@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/04 00:03:14 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:46:48 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	new_image(t_mlx *mlx, t_img *img)
 {
 	if (mlx->img == img)
 		mlx_destroy_image(mlx->mlx, img->img);
-	img->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
+	img->img = mlx_new_image(mlx->mlx, mlx->width + MENU_SIZE, mlx->height);
 	if (!img->img)
 		return (1);
 	img->addr = mlx_get_data_addr(img->img,

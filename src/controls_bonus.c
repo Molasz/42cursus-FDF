@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 20:12:26 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:38:50 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	on_key_bonus(int n, t_mlx *mlx)
 {
 	if (n == LEFT)
-		mlx->x_shift += 10;
+		mlx->x_shift += 5 * mlx->xy_scale;
 	else if (n == RIGHT)
-		mlx->x_shift -= 10;
+		mlx->x_shift -= 5 * mlx->xy_scale;
 	else if (n == UP)
-		mlx->y_shift += 10;
+		mlx->y_shift += 5 * mlx->xy_scale;
 	else if (n == DOWN)
-		mlx->y_shift -= 10;
+		mlx->y_shift -= 5 * mlx->xy_scale;
 	else if (n == W)
 		mlx->y_angle += 0.1;
 	else if (n == S)
@@ -38,14 +38,16 @@ void	on_key_bonus(int n, t_mlx *mlx)
 	new_menu(mlx, mlx->menu);
 }
 
-void	on_mouse_bonus(int n, t_mlx *mlx)
+int	on_mouse(int n, int x, int y, t_mlx *mlx)
 {
+	(void) (x + y);
 	if (n == MOUSE_UP && mlx->xy_scale > 1)
 		mlx->xy_scale--;
 	else if (n == MOUSE_DOWN)
 		mlx->xy_scale++;
 	else
-		return ;
+		return (0);
 	new_image(mlx, mlx->img);
 	new_menu(mlx, mlx->menu);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 23:44:41 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/01 23:50:14 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/04 00:12:34 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,6 @@ int	on_key(int n, t_mlx *mlx)
 		on_close(mlx);
 	else
 		on_key_bonus(n, mlx);
-	return (0);
-}
-
-int	on_mouse(int n, int x, int y, t_mlx *mlx)
-{
-	(void) (x + y);
-	on_mouse_bonus(n, mlx);
 	return (0);
 }
 
