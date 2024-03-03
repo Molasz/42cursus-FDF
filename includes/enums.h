@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:18:51 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 12:53:42 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 16:52:21 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ enum
 	I_X = 25,
 	I_Y = 30,
 	CHEAD_X = 60,
-	CHEAD_Y = 170,
+	CHEAD_Y = 190,
 	C_X = 15,
-	C_Y = 195,
+	C_Y = 215,
 	VHEAD_X = 50,
-	VHEAD_Y = 340,
+	VHEAD_Y = 360,
 	V_X = 25,
-	V_Y = 365
+	V_Y = 385
 };
 
 # else
@@ -80,15 +80,15 @@ enum
 	IHEAD_X = 55,
 	IHEAD_Y = 25,
 	I_X = 25,
-	I_Y = 50,
+	I_Y = 70,
 	CHEAD_X = 50,
-	CHEAD_Y = 175,
+	CHEAD_Y = 195,
 	C_X = 15,
-	C_Y = 200,
+	C_Y = 220,
 	VHEAD_X = 50,
-	VHEAD_Y = 325,
+	VHEAD_Y = 345,
 	V_X = 25,
-	V_Y = 350
+	V_Y = 370
 };
 
 # endif

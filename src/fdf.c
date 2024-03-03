@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 15:47:37 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 16:49:40 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,17 @@ static void	set_color(t_mlx *mlx, int x, int y)
 	mlx->coords[y][x].r = 255;
 	mlx->coords[y][x].g = 255;
 	mlx->coords[y][x].b = 255;
-	if (mlx->coords[y][x].z >= 0)
+	if (mlx->coords[y][x].z > 0)
 	{
 		mlx->coords[y][x].r = 255.0 / mlx->z_max * mlx->coords[y][x].z;
-		mlx->coords[y][x].b = 255.0 / mlx->z_max * mlx->coords[y][x].z;
+		mlx->coords[y][x].g = 255.0 / mlx->z_max * -mlx->coords[y][x].z;
+		mlx->coords[y][x].b = 0;
 	}
 	else if (mlx->coords[y][x].z < 0)
 	{
-		mlx->coords[y][x].r = 255.0 / mlx->z_max * -mlx->coords[y][x].z;
-		mlx->coords[y][x].g = 255.0 / mlx->z_max * -mlx->coords[y][x].z;
+		mlx->coords[y][x].r = 0;
+		mlx->coords[y][x].g = 255.0 / mlx->z_min * -mlx->coords[y][x].z;
+		mlx->coords[y][x].b = 255.0 / mlx->z_min * mlx->coords[y][x].z;
 	}
 }
 

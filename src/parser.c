@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/02 11:09:29 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 16:40:00 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,15 @@ static t_coord	*read_line(char *line, t_mlx *mlx)
 		while (line[i] == ' ')
 			i++;
 		coords[x].z = ft_atoi(line + i);
-		if (abs(coords[x].z) > mlx->z_max)
-			mlx->z_max = abs(coords[x].z);
+		if (coords[x].z > mlx->z_max)
+			mlx->z_max = coords[x].z;
+		else if (coords[x].z < mlx->z_min)
+			mlx->z_min = coords[x].z;
 		while (line[i] >= '0' && line[i] <= '9')
 			i++;
-		read_color(coords + x, line + i);
+		read_color(coords + x++, line + i);
 		while (line[i] != ' ' && line[i])
 			i++;
-		x++;
 	}
 	return (coords);
 }

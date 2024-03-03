@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:42:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 12:52:32 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 16:51:24 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static void	write_menu(t_mlx *mlx)
 	write_white(mlx, I_X, I_Y + SPACE, "Win height:");
 	write_white(mlx, I_X, I_Y + SPACE * 2, "Max X:");
 	write_white(mlx, I_X, I_Y + SPACE * 3, "Max Y:");
-	write_white(mlx, I_X, I_Y + SPACE * 4, "Max Z:");
+	write_white(mlx, I_X, I_Y + SPACE * 4, "Min Z:");
+	write_white(mlx, I_X, I_Y + SPACE * 5, "Max Z:");
 	write_white(mlx, CHEAD_X, CHEAD_Y, "### CONTROLS ###");
 	write_white(mlx, C_X, C_Y, "[Arrows] Move model");
 	write_white(mlx, C_X, C_Y + SPACE, "[Mouse wheel] Zoom in/out");
@@ -64,7 +65,8 @@ static void	write_vars(t_mlx *mlx)
 	write_var(mlx, I_X + SPACE * 6, I_Y + SPACE, ft_itoa(mlx->height));
 	write_var(mlx, I_X + SPACE * 6, I_Y + SPACE * 2, ft_itoa(mlx->x_max));
 	write_var(mlx, I_X + SPACE * 6, I_Y + SPACE * 3, ft_itoa(mlx->y_max));
-	write_var(mlx, I_X + SPACE * 6, I_Y + SPACE * 4, ft_itoa(mlx->z_max));
+	write_var(mlx, I_X + SPACE * 6, I_Y + SPACE * 4, ft_itoa(mlx->z_min));
+	write_var(mlx, I_X + SPACE * 6, I_Y + SPACE * 5, ft_itoa(mlx->z_max));
 	write_var(mlx, V_X + SPACE * 6, V_Y, ft_itoa(mlx->x_shift));
 	write_var(mlx, V_X + SPACE * 6, V_Y + SPACE, ft_itoa(mlx->y_shift));
 	write_var(mlx, V_X + SPACE * 6, V_Y + SPACE * 2,

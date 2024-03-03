@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 12:57:45 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/03 17:50:43 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,30 @@ static void	calc_isometric(t_mlx *mlx, t_point *start, t_point *end)
 	end->y = (end->x + end->y) * sin(mlx->y_angle) - z;
 	end->x += mlx->x_shift;
 	end->y += mlx->y_shift;
+	
 }
 
 static void	calc_prespective(t_mlx *mlx, t_point *start, t_point *end)
 {
-	int	z;
+	double	ar;
+	double	f;
+	double	lam;
+	double	nlam;
+	double	z;
 
-	z = mlx->coords[start->y][start->x].z * mlx->z_scale * mlx->xy_scale;
-	start->x *= mlx->xy_scale;
-	start->y *= mlx->xy_scale;
-	start->x /= start->y * tan(mlx->x_angle / 2);
-	start->y = z / (start->y * tan(mlx->y_angle / 2));
-	start->x += mlx->x_shift;
-	start->y += mlx->y_shift;
-	z = mlx->coords[end->y][end->x].z * mlx->z_scale * mlx->xy_scale;
-	end->x *= mlx->xy_scale * 30;
-	end->y *= mlx->xy_scale * 30;
-	end->x = end->x / (z * tan(mlx->x_angle / 2));
-	end->y = end->y / (z * tan(mlx->y_angle / 2));
-	end->x += mlx->x_shift;
-	end->y += mlx->y_shift;
+	ar = mlx->height / mlx->width;
+	f = 1 / tan(0.25/2);
+	lam = mlx->z_max / (mlx->z_max - mlx->z_min);
+	nlam = -(mlx->z_max * mlx->z_min) / (mlx->z_max - mlx->z_min);
+
+	z = lam * mlx->coords[start->y][start->x].z - nlam * mlx->z_min;
+	start->x *= ar * f;
+	start->y *= f;
+
+	z = lam * mlx->coords[end->y][end->x].z - nlam * mlx->z_min;
+	end->x *= ar * f;
+	end->y *= f;
+	printf("[%d, %d] [%d, %d %f]\n", start->x, start->y, end->x, end->y, z);
 }
 
 static void	calc_line(t_mlx *mlx, t_point start, t_point end)
