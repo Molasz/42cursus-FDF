@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 23:15:21 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/04 00:03:38 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:15:29 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	calc_isometric(t_mlx *mlx, int x, int y, t_point *p)
 	int	z;
 
 	z = mlx->coords[y][x].z * mlx->z_scale * mlx->xy_scale;
-	p->x = x * mlx->xy_scale;
-	p->y = y * mlx->xy_scale;
+	p->x = mlx->coords[y][x].x * mlx->xy_scale;
+	p->y = mlx->coords[y][x].y * mlx->xy_scale;
 	p->x = (p->x - p->y) * cos(mlx->x_angle);
 	p->y = (p->x + p->y) * sin(mlx->y_angle) - z;
 	p->x += mlx->x_shift;

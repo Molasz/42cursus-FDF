@@ -6,14 +6,16 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 23:50:28 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 01:08:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void	read_color(t_coord *coord, char *s)
+static void	read_color(t_coord *coord, char *s, int x, int y)
 {
+	coord->x = x;
+	coord->y = y;
 	coord->r = 0;
 	coord->g = 0;
 	coord->b = 0;
@@ -27,7 +29,7 @@ static void	read_color(t_coord *coord, char *s)
 	}
 }
 
-static t_coord	*read_line(char *line, t_mlx *mlx)
+static t_coord	*read_line(char *line, t_mlx *mlx, int y)
 {
 	t_coord	*coords;
 	int		x;
@@ -37,8 +39,8 @@ static t_coord	*read_line(char *line, t_mlx *mlx)
 	if (!coords)
 		return (NULL);
 	i = 0;
-	x = 0;
-	while (line[i] != '\n' && line[i])
+	x = -1;
+	while (line[i] != '\n' && line[i] && ++x > -1)
 	{
 		while (line[i] == ' ')
 			i++;
@@ -49,7 +51,7 @@ static t_coord	*read_line(char *line, t_mlx *mlx)
 			mlx->z_min = coords[x].z;
 		while (line[i] >= '0' && line[i] <= '9')
 			i++;
-		read_color(coords + x++, line + i);
+		read_color(&coords[x], line + i, x, y);
 		while (line[i] != ' ' && line[i])
 			i++;
 	}
@@ -84,7 +86,7 @@ static int	read_file(int fd, t_mlx *mlx)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		coords[y] = read_line(line, mlx);
+		coords[y] = read_line(line, mlx, y);
 		points[y] = malloc(mlx->x_max * sizeof (t_point));
 		free(line);
 		if (!coords[y] || !points[y])

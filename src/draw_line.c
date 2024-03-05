@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:50:06 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/04 00:47:49 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 00:55:02 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,15 @@ static void	put_pixel(t_mlx *mlx, int x, int y, t_color *color)
 	if (x < 0 || x >= mlx->width + MENU_SIZE || y < 0 || y >= mlx->height)
 		return ;
 	dst = mlx->img->addr + (y * mlx->img->line_len + x * (mlx->img->bpp / 8));
-	*(unsigned int *)dst = (color->r << 16 | color->g << 8 | color->b);
+	*(unsigned int *)dst = ((int) color->r << 16
+			| (int) color->g << 8 | (int) color->b);
 }
 
 static void	update_color(t_color *color)
 {
-	if ((color->dr > 0 && color->r + color->dr < 255)
-		|| (color->dr < 0 && color->r + color->dr > 0))
-		color->r += color->dr;
-	if ((color->dg > 0 && color->g + color->dg < 255)
-		|| (color->dg < 0 && color->g + color->dg > 0))
-		color->g += color->dg;
-	if ((color->db > 0 && color->b + color->db < 255)
-		|| (color->db < 0 && color->b + color->db > 0))
-		color->b += color->db;
+	color->r += color->dr;
+	color->g += color->dg;
+	color->b += color->db;
 }
 
 static int	invalid_coord(t_mlx *mlx, t_point *coord)

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:25:56 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/04 00:42:54 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 00:46:11 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ static void	set_win_size(t_mlx *mlx)
 		size = WIN_SIZE / 2.0 / mlx->y_max;
 		mlx->width = size * (mlx->x_max + 1) + (WIN_SIZE / 2);
 	}
-	mlx->x_shift = WIN_SIZE / 2 + MENU_SIZE;
-	mlx->y_shift = WIN_SIZE / 2;
+	mlx->x_shift = (mlx->width - MENU_SIZE) / 2 * 1.75;
+	mlx->y_shift = mlx->height / 2 * 0.75;
 	mlx->xy_scale = size;
 	mlx->z_max = 1;
 	mlx->z_min = -1;
-	mlx->x_angle = 0.25;
-	mlx->y_angle = 0.2;
+	mlx->x_angle = 0.4;
+	mlx->y_angle = 0.4;
 	mlx->projection = 0;
 }
 

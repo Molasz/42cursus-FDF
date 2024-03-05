@@ -6,7 +6,7 @@
 #    By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 13:22:14 by molasz-a          #+#    #+#              #
-#    Updated: 2024/03/03 23:38:53 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/03/04 01:38:35 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS	= fdf.c \
 			menu.c \
 			menu_utils.c
 
-BSRCS	= controls_bonus.c
+BSRCS	= controls_bonus.c \
+			rotations_bonus.c
 
 OBJS	= ${addprefix obj/, ${SRCS:.c=.o}}
 

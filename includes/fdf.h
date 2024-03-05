@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/04 00:18:00 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/04 23:29:53 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	write_white(t_mlx *mlx, int x, int y, char *str);
 void	controls(t_mlx *mlx);
 int		on_close(t_mlx *mlx);
 int		on_key(int n, t_mlx *mlx);
+void	rotation(t_mlx *mlx, int n);
 int		new_menu(t_mlx *mlx, t_img *menu);
 
 # ifdef BONUS

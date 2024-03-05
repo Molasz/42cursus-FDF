@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/04 00:38:50 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 00:54:27 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	on_key_bonus(int n, t_mlx *mlx)
 {
 	if (n == LEFT)
-		mlx->x_shift += 5 * mlx->xy_scale;
+		mlx->x_shift += mlx->xy_scale;
 	else if (n == RIGHT)
-		mlx->x_shift -= 5 * mlx->xy_scale;
+		mlx->x_shift -= mlx->xy_scale;
 	else if (n == UP)
-		mlx->y_shift += 5 * mlx->xy_scale;
+		mlx->y_shift += mlx->xy_scale;
 	else if (n == DOWN)
-		mlx->y_shift -= 5 * mlx->xy_scale;
+		mlx->y_shift -= mlx->xy_scale;
 	else if (n == W)
 		mlx->y_angle += 0.1;
 	else if (n == S)

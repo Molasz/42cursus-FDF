@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:27:12 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/04 00:42:14 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 00:56:44 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	main(int argc, char **argv)
 		mlx.mlx = mlx_init();
 		if (!mlx.mlx)
 			on_error(&mlx);
-		mlx.win = mlx_new_window(mlx.mlx, mlx.width + MENU_SIZE, mlx.height, "FDF");
+		mlx.win = mlx_new_window(mlx.mlx, mlx.width + MENU_SIZE, mlx.height,
+				"FDF");
 		if (!mlx.win || new_image(&mlx, &img) || new_menu(&mlx, &menu))
 			on_error(&mlx);
 		controls(&mlx);
