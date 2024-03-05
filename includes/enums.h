@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:18:51 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/05 02:54:30 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:56:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ enum
 	S = 1,
 	D = 2,
 	MOUSE_LEFT = 1,
-	MOUSE_RIGHT = 3,
+	MOUSE_RIGHT = 2,
 	MOUSE_UP = 4,
 	MOUSE_DOWN = 5,
 	TAB = 48,
-	SPACE = 32
+	SPACE = 49
 };
 
 enum
@@ -53,9 +53,9 @@ enum
 	C_X = 15,
 	C_Y = 215,
 	VHEAD_X = 50,
-	VHEAD_Y = 380,
+	VHEAD_Y = 400,
 	V_X = 25,
-	V_Y = 405
+	V_Y = 425
 };
 
 # else
