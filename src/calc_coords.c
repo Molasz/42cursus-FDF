@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 23:15:21 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/04 16:15:29 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:39:42 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static void	calc_isometric(t_mlx *mlx, int x, int y, t_point *p)
 	p->y = mlx->coords[y][x].y * mlx->xy_scale;
 	p->x = (p->x - p->y) * cos(mlx->x_angle);
 	p->y = (p->x + p->y) * sin(mlx->y_angle) - z;
-	p->x += mlx->x_shift;
-	p->y += mlx->y_shift;
 }
 
 static void	calc_prespective(t_mlx *mlx, int x, int y, t_point *p)
@@ -33,14 +31,13 @@ static void	calc_prespective(t_mlx *mlx, int x, int y, t_point *p)
 	double	nlam;
 	double	z;
 
-	ar = mlx->height / mlx->width;
-	f = 1 / tan(0.25 / 2);
+	ar = (float) mlx->height / mlx->width;
+	f = 1 / tan(mlx->x_angle / 2);
 	lam = mlx->z_max / (mlx->z_max - mlx->z_min);
 	nlam = -(mlx->z_max * mlx->z_min) / (mlx->z_max - mlx->z_min);
-	z = lam * mlx->coords[y][x].z - nlam * mlx->z_min;
+	z = lam * mlx->coords[y][x].z *mlx->xy_scale - nlam * mlx->z_min;
 	p->x *= ar * f;
 	p->y *= f;
-	printf("[%d, %d, %f]\n", p->x, p->y, z);
 }
 
 void	calc_coords(t_mlx *mlx)
@@ -54,10 +51,14 @@ void	calc_coords(t_mlx *mlx)
 		x = 0;
 		while (x < mlx->x_max)
 		{
+			mlx->points[y][x].x = mlx->coords[y][x].x * mlx->xy_scale;
+			mlx->points[y][x].y = mlx->coords[y][x].y * mlx->xy_scale;
 			if (!mlx->projection)
 				calc_isometric(mlx, x, y, &mlx->points[y][x]);
 			else
 				calc_prespective(mlx, x, y, &mlx->points[y][x]);
+			mlx->points[y][x].x += mlx->x_shift;
+			mlx->points[y][x].y += mlx->y_shift;
 			x++;
 		}
 		y++;
