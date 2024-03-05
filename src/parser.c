@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:58:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/05 01:08:30 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 22:09:20 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ int	parser(char *file, t_mlx *mlx)
 		return (1);
 	if (read_file(fd, mlx))
 		return (1);
-	mlx->z_scale = 10.0 / mlx->z_max;
+	if (mlx->z_max > -mlx->z_min)
+		mlx->z_scale = 10.0 / mlx->z_max;
+	else
+		mlx->z_scale = 10.0 / -mlx->z_min;
 	return (0);
 }

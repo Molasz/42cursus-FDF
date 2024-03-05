@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:25:56 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/05 02:41:49 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 22:18:45 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,22 @@ static int	count_x(char *line)
 
 static void	set_win_size(t_mlx *mlx)
 {
-	double	size;
+	float	size;
 
 	if (mlx->x_max > mlx->y_max)
 	{
 		mlx->width = WIN_SIZE;
-		size = WIN_SIZE / 2.0 / mlx->x_max;
+		size = WIN_SIZE / 2.0 / (mlx->x_max + 1);
 		mlx->height = size * (mlx->y_max + 1) + (WIN_SIZE / 2);
 	}
 	else
 	{
 		mlx->height = WIN_SIZE;
-		size = WIN_SIZE / 2.0 / mlx->y_max;
+		size = WIN_SIZE / 2.0 / (mlx->y_max + 1);
 		mlx->width = size * (mlx->x_max + 1) + (WIN_SIZE / 2);
 	}
-	mlx->x_shift = (mlx->width - MENU_SIZE) / 2 * 1.75;
-	mlx->y_shift = mlx->height / 2 * 0.75;
+	mlx->x_shift = mlx->width / 2 + MENU_SIZE;
+	mlx->y_shift = mlx->height / 2;
 	mlx->xy_scale = size;
 	mlx->z_max = 1;
 	mlx->z_min = -1;

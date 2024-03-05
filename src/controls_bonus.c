@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/05 16:55:47 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 23:50:58 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ int	on_mouse(int n, int x, int y, t_mlx *mlx)
 {
 	(void) (x + y);
 	if (n == MOUSE_UP && mlx->xy_scale > 1)
-		mlx->xy_scale--;
+		mlx->xy_scale -= 0.25;
 	else if (n == MOUSE_DOWN)
-		mlx->xy_scale++;
+		mlx->xy_scale += 0.25;
 	else if (n == MOUSE_LEFT)
-		mlx->z_scale *= 1.1;
+		mlx->z_scale += 0.1;
 	else if (n == MOUSE_RIGHT)
-		mlx->z_scale *= 0.9;
+		mlx->z_scale -= 0.1;
 	else
 		return (0);
 	new_image(mlx, mlx->img);
