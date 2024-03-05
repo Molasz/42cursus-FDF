@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:59:39 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/05 00:54:27 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 02:55:16 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	on_key_bonus(int n, t_mlx *mlx)
 		mlx->x_angle -= 0.1;
 	else if (n == TAB)
 		mlx->projection = !mlx->projection;
+	else if (n == SPACE)
+		mlx->triangles = !mlx->triangles;
 	else
 		return ;
 	new_image(mlx, mlx->img);
@@ -45,6 +47,10 @@ int	on_mouse(int n, int x, int y, t_mlx *mlx)
 		mlx->xy_scale--;
 	else if (n == MOUSE_DOWN)
 		mlx->xy_scale++;
+	else if (n == MOUSE_LEFT)
+		mlx->z_scale *= 1.1;
+	else if (n == MOUSE_RIGHT)
+		mlx->z_scale *= 0.9;
 	else
 		return (0);
 	new_image(mlx, mlx->img);

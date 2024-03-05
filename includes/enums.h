@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:18:51 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/03 16:52:21 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 02:54:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,18 @@ enum
 	A = 0,
 	S = 1,
 	D = 2,
+	MOUSE_LEFT = 1,
+	MOUSE_RIGHT = 3,
 	MOUSE_UP = 4,
 	MOUSE_DOWN = 5,
-	TAB = 48
+	TAB = 48,
+	SPACE = 32
 };
 
 enum
 {
 	MENU_SIZE = 300,
-	SPACE = 25,
+	PADD = 25,
 	IHEAD_X = 55,
 	IHEAD_Y = 5,
 	I_X = 25,
@@ -50,9 +53,9 @@ enum
 	C_X = 15,
 	C_Y = 215,
 	VHEAD_X = 50,
-	VHEAD_Y = 360,
+	VHEAD_Y = 380,
 	V_X = 25,
-	V_Y = 385
+	V_Y = 405
 };
 
 # else
@@ -68,15 +71,18 @@ enum
 	A = 97,
 	S = 115,
 	D = 100,
+	MOUSE_LEFT = 1,
+	MOUSE_RIGHT = 3,
 	MOUSE_UP = 4,
 	MOUSE_DOWN = 5,
-	TAB = 65289
+	TAB = 65289,
+	SPACE = 32
 };
 
 enum
 {
 	MENU_SIZE = 240,
-	SPACE = 20,
+	PADD = 20,
 	IHEAD_X = 55,
 	IHEAD_Y = 25,
 	I_X = 25,
@@ -86,9 +92,9 @@ enum
 	C_X = 15,
 	C_Y = 220,
 	VHEAD_X = 50,
-	VHEAD_Y = 345,
+	VHEAD_Y = 365,
 	V_X = 25,
-	V_Y = 370
+	V_Y = 390
 };
 
 # endif

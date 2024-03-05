@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:44:07 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/04 00:46:48 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 03:00:26 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,29 @@ static void	calc_color(t_color *color, t_coord *start, t_coord *end)
 	color->db = end->b - start->b;
 }
 
-static void	connect_pixels(t_mlx *mlx)
+static void	draw_lines(t_mlx *mlx, int x, int y)
 {
 	t_color	color;
+
+	if (x + 1 < mlx->x_max)
+	{
+		calc_color(&color, &mlx->coords[y][x], &mlx->coords[y][x + 1]);
+		draw_line(mlx, &mlx->points[y][x], &mlx->points[y][x + 1], &color);
+	}
+	if (y + 1 < mlx->y_max)
+	{
+		calc_color(&color, &mlx->coords[y][x], &mlx->coords[y + 1][x]);
+		draw_line(mlx, &mlx->points[y][x], &mlx->points[y + 1][x], &color);
+	}
+	if (mlx->triangles && x + 1 < mlx->x_max && y + 1 < mlx->y_max)
+	{
+		calc_color(&color, &mlx->coords[y][x], &mlx->coords[y + 1][x + 1]);
+		draw_line(mlx, &mlx->points[y][x], &mlx->points[y + 1][x + 1], &color);
+	}
+}
+
+static void	connect_pixels(t_mlx *mlx)
+{
 	int		x;
 	int		y;
 
@@ -33,20 +53,7 @@ static void	connect_pixels(t_mlx *mlx)
 	{
 		x = -1;
 		while (++x < mlx->x_max)
-		{
-			if (x + 1 < mlx->x_max)
-			{
-				calc_color(&color, &mlx->coords[y][x], &mlx->coords[y][x + 1]);
-				draw_line(mlx, &mlx->points[y][x], &mlx->points[y][x + 1],
-					&color);
-			}
-			if (y + 1 < mlx->y_max)
-			{
-				calc_color(&color, &mlx->coords[y][x], &mlx->coords[y + 1][x]);
-				draw_line(mlx, &mlx->points[y][x], &mlx->points[y + 1][x],
-					&color);
-			}
-		}
+			draw_lines(mlx, x, y);
 	}
 }
 

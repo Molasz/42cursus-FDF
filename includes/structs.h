@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:17:30 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/05 01:09:42 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 02:41:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_mlx
 	float	xy_scale;
 	float	z_scale;
 	int		projection;
+	int		triangles;
 }			t_mlx;
 
 typedef struct s_foint

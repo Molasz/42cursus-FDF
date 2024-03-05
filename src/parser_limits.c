@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:25:56 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/03/05 00:46:11 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/03/05 02:41:49 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void	set_win_size(t_mlx *mlx)
 	mlx->x_angle = 0.4;
 	mlx->y_angle = 0.4;
 	mlx->projection = 0;
+	mlx->triangles = 0;
 }
 
 int	parser_limits(char *f, t_mlx *mlx)
